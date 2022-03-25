@@ -1,0 +1,5 @@
+ProID	Priority	InTime(s)	resource1	resource2	InstrucNum 
+1	1	0	0	0	29
+2	1	5	0	0	25
+3	2	14	0	0	29
+4	3	23	0	0	22

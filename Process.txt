@@ -1,0 +1,218 @@
+
+CPU空闲等待
+
+系统时间2s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间3s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间4s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间5s
+
+CPU等待
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 4
+State: Instruct
+id	state	times
+1	3	1
+2	1	1
+3	3	1
+4	1	1
+Present Length: 1
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 5
+State: Instruct
+id	state	times
+5	3	1
+6	10	1
+7	1	1
+8	11	1
+Present Length: 2
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 6
+State: Instruct
+id	state	times
+9	5	1
+10	11	1
+11	2	1
+12	5	1
+Present Length: 3
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 7
+State: Instruct
+id	state	times
+13	3	1
+14	9	1
+15	8	1
+16	0	1
+Present Length: 4
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 8
+State: Instruct
+id	state	times
+17	5	1
+18	4	1
+19	1	1
+20	11	1
+Present Length: 5
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 9
+State: Instruct
+id	state	times
+21	2	1
+22	7	1
+23	2	1
+24	6	1
+Present Length: 6
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 10
+State: Instruct
+id	state	times
+25	4	1
+26	11	1
+27	11	1
+28	11	1
+Present Length: 7
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 11
+State: Instruct
+id	state	times
+29	0	1
+Present Length: 8
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 2
+PageNum: 34
+State: Instruct
+id	state	times
+1	5	1
+2	0	1
+3	4	1
+4	0	1
+Present Length: 9
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 2
+PageNum: 35
+State: Instruct
+id	state	times
+5	0	1
+6	5	1
+7	4	1
+8	5	1
+Present Length: 10
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 2
+PageNum: 36
+State: Instruct
+id	state	times
+9	10	1
+10	3	1
+11	4	1
+12	9	1
+Present Length: 11
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 2
+PageNum: 37
+State: Instruct
+id	state	times
+13	9	1
+14	2	1
+15	10	1
+16	9	1
+Present Length: 12
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 2
+PageNum: 38
+State: Instruct
+id	state	times
+17	7	1
+18	8	1
+19	9	1
+20	1	1
+Present Length: 13
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 2
+PageNum: 39
+State: Instruct
+id	state	times
+21	0	1
+22	8	1
+23	1	1
+24	5	1
+Present Length: 14
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 2
+PageNum: 40
+State: Instruct
+id	state	times
+25	4	1
+Present Length: 15
+发生高级调度
+1号作业被创建为进程
+发生高级调度
+2号作业被创建为进程
+进程调度选择1号进程

@@ -170,10 +170,11 @@ public class Process{
 	  		else
 	  			this.pcb.prosize = this.InstrucNum / 4 + 5;
 	  		this.Ir = new Instruct[InstrucNum];  //具体内容的指令数组
+		  	int baseAddress = 4<<2;//指令从4号页开始存放（第5页）
 	  		for(int i = 1; i <= this.InstrucNum; i++) {  //确定n条指令的成员，指令编号从1开始
 	  			this.Ir[i - 1] = new Instruct();
-	  			this.Ir[i - 1].setir(i, job.IR[i - 1].get_State(),((((i - 1) / 4 + 4)) << 2) + (i - 1) % 4);//指令编号，指令状态，指令地址
-	  			//指令从4号页开始存放（第5页）
+	  			this.Ir[i - 1].setir(i, job.IR[i - 1].get_State(),baseAddress+job.IR[i - 1].getL_Address(),job.IR[i - 1].getRunedtime());//指令编号，指令状态，指令地址
+
 	  		}
 	  		this.pcb.blocktimes=0;
 	  		this.pcb.page_register.length=0;

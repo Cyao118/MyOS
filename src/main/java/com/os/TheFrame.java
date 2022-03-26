@@ -106,7 +106,7 @@ public class TheFrame{
 		public void add() throws IOException {
 		    	File fp;
 		    	JCB job=new JCB();
-		    	fp = new File("19317124-jobs-input.txt");
+		    	fp = new File(common.user+"-jobs-input.txt");
 		    	BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));
 				 //output.write( "Instruc_ID\tInstruc_State\tName\n");
 				 jobnum++;
@@ -135,16 +135,21 @@ public class TheFrame{
 						fw.close();
 					}
 					output = new BufferedWriter(new FileWriter(fp,true));
-					output.write( "Instruc_ID\tInstruc_State\tName\n");
+					output.write( "Instruc_ID\tInstruc_State\tL_Address\tInRunTimes\n");
 				    int Instruc_State = 0;
 				  
 					  int i = 0;
 					  r = new Random();
+					  int baseAddress = 0;
 					  for (;i < job.instructNum;i++) {
 						  job.IR[i].Instruct_ID =i;
-						  Instruc_State = r.nextInt(12);
+						  Instruc_State = r.nextInt(7);
 						  job.IR[i].Instruct_State = Instruc_State;
-						output.write(i+1+"\t\t"+Instruc_State+"\t\t\n");
+						  job.IR[i].L_Address = InstructTypes.getLogicAddressByState(Instruc_State, baseAddress);
+//						  job.IR[i].time = InstructTypes.getInstructByState(Instruc_State).getRuntime();
+						  output.write(i+1+"\t\t"+Instruc_State+"\t\t"+job.IR[i].L_Address+"\t\t"+job.IR[i].time+"\n");
+						  if(InstructTypes.getOrderTypeByState(Instruc_State))
+							  baseAddress = job.IR[i].L_Address;
 					  }
 					  output.close();
 					  management.jobTable.add(job);

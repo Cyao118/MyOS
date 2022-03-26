@@ -23,7 +23,7 @@ public class CreatJobs {
 		int intime = Creat_time;
 		int midtime = 0;
 		int instrucnum = 0;
-		fp = new File("19317124-jobs-input.txt");
+		fp = new File(common.user+"-jobs-input.txt");
 		
 			if(!fp.exists())
 				fp.createNewFile();  //创建文件
@@ -71,28 +71,18 @@ public class CreatJobs {
 				fw.close();
 			}
 			BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));
-			 output.write( "Instruc_ID\tInstruc_State\tName\n");
+			 output.write( "Instruc_ID\tInstruc_State\tL_Address\tInRunTimes\n");
 		    int Instruc_State = 0;
 		    if (PCB_num != 0 && !if_creatInstruc[j]) {
 			  int i = 0;
+			  int baseAddress = 0;
 			  Random r = new Random();
 			  for (;i < instruc_num[j];i++) {
-				Instruc_State = r.nextInt(12);
-				output.write(i+1+"\t\t"+Instruc_State+"\t\t\n");
-				/*switch(Instruc_State) {
-				case 0:output.write("do"+"\n");break;
-				case 1:output.write("needfirst"+"\n");break;
-				case 2:output.write("freefirst"+"\n");break;
-				case 3:output.write("needblock"+"\n");break;
-				case 4:output.write("P(tomutex)"+"\n");break;
-				case 5:output.write("V(freemutex)"+"\n");break;
-				case 6:output.write("P(tofull)"+"\n");break;
-				case 7:output.write("V(freefull)"+"\n");break;
-				case 8:output.write("P(toempty)"+"\n");break;
-				case 9:output.write("V(freeempty)"+"\n");break;
-				case 10:output.write("needsed"+"\n");break;
-				case 11:output.write("freesed"+"\n");break;
-				}*/
+				Instruc_State = r.nextInt(7);
+				int L_Address =InstructTypes.getLogicAddressByState(Instruc_State, baseAddress);
+				output.write(i+1+"\t\t"+Instruc_State+"\t\t"+L_Address+"\t\t"+InstructTypes.getInstructByState(Instruc_State).getRuntime()+"\n");
+				if(InstructTypes.getOrderTypeByState(Instruc_State))
+				  	baseAddress = L_Address;
 			  }
 			  output.close();
 				if_creatInstruc[j] = true;

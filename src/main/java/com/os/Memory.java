@@ -76,7 +76,7 @@ public class Memory {
 				int m = (j - 4) * 4;  //每页4条指令，当前页的第一条指令的id-1
 				for(int i = 0; i < 4 && ((m + i) < p.InstrucNum); i++) {
 					block[b].ir[i] = new Instruct();
-					block[b].ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address);/////更改
+					block[b].ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address, p.Ir[m + i].getRunedtime());/////更改
 					block[b].irnum++;
 				}
 				break;

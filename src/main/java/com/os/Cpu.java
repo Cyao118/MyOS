@@ -41,7 +41,7 @@ public class Cpu {//runtime被注释，需要添加时间片和系统时间！�
 	  this.mmu=new MMU();
 	  this.MDR=-1;
 	  this.stutas=0;
-	  this.times=3;
+	  this.times=common.timeslice;
 	  this.clocks=0;
 	  this.pcb=new Process();
 	  this.isEnd=true;
@@ -74,9 +74,10 @@ public class Cpu {//runtime被注释，需要添加时间片和系统时间！�
 		this.mmu.recover(p.pcb);  //MMU现场恢复
 		this.MDR = -1; 
 		this.stutas= 0;  //恢复成初始用户态
-		this.times= 3;  //当前CPU的运行时间为0
+		this.times= common.timeslice;  //当前CPU的运行时间为0
 		this.isEnd = false;
 		this.Isuse=true;
+
 		
 	}
   public int Execute() throws IOException {//根据不同指令进行不同操作
@@ -106,8 +107,8 @@ public class Cpu {//runtime被注释，需要添加时间片和系统时间！�
 					return 2;
 				}
 			}
-			
-				
+
+
 			if(IR.get_State()==2) {
 				this.stutas = 1;
 				if(( p = management.deviceTable[0].V() ) != null ) {  //有进程出阻塞队列
@@ -124,14 +125,14 @@ public class Cpu {//runtime被注释，需要添加时间片和系统时间！�
 				return 0;
 			}
 			//死锁V1指令
-				
-			
+
+
 			if(IR.get_State()==3) {
 				pcb.pcb.blocktimes = 50;   //阻塞时间为50
 				IR.time = 0;  //指令时间为0
 				return 1;  //需要阻塞当前进程
 			}//普通阻塞
-				
+
 			if(IR.get_State()==4) {//P(mutex)
 				this.stutas = 1;
 				if(management.source.PM(pcb)) {  //可以进入
@@ -172,7 +173,7 @@ public class Cpu {//runtime被注释，需要添加时间片和系统时间！�
 					//this.state = 0;
 					return 2;
 				}
-			}	
+			}
 			if(IR.get_State()==7) { //V(full)
 				this.stutas = 1;
 				if(( p = management.source.VF() ) != null ) {  //有进程出阻塞队列
@@ -198,7 +199,7 @@ public class Cpu {//runtime被注释，需要添加时间片和系统时间！�
 					//this.state = 0;
 					return 2;
 				}
-			}	
+			}
 			if(IR.get_State()==9) {  //9是V(empty)
 				this.stutas = 1;
 				if(( p =management.source.VE() ) != null ) {  //有进程出阻塞队列
@@ -225,12 +226,12 @@ public class Cpu {//runtime被注释，需要添加时间片和系统时间！�
 					//this.state = 0;
 					return 2;
 				}
-			}	
+			}
 			if(IR.get_State()==11) { //死锁V2指令
 				this.stutas = 1;
 				if(( p = management.deviceTable[1].V() ) != null ) {  //有进程出阻塞队列
 					p.nowd2++;
-					Thequeue.ready.add(p);  //直接在这里就进入就绪队列？？？？？？		
+					Thequeue.ready.add(p);  //直接在这里就进入就绪队列？？？？？？
 					Write_Frame.one.textArea[0].append("进程" + p.pcb.ProID + "(作业" + p.JobID + ")被唤醒，进入就绪队列！\n");
 				}
 				else {  //没有阻塞进程出队

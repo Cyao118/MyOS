@@ -37,7 +37,7 @@ public class JCB {
  		this.IR = new Instruct[p.InstrucNum];
  		for(int i = 0; i < p.InstrucNum; i++) {
  			IR[i] = new Instruct();
- 			IR[i].setir(p.Ir[i].Instruct_ID, p.Ir[i].Instruct_State,-1);  //地址要重新计算
+ 			IR[i].setir(p.Ir[i].Instruct_ID, p.Ir[i].Instruct_State,-1,p.Ir[i].runedtime);  //地址要重新计算
  		}
  		this.d1 = p.d1;
  		this.d2=p.d2;

@@ -36,22 +36,43 @@ public enum InstructTypes {
             return result;
         }
 
-        public static int getLogicAddressByState(int state,int address)
+        public static int getLogicAddressByState(int state,int baseAddress)
         {
             int result = 0;
+            Random random = new Random();
             switch (state)
             {
-                case 0:case 2:case 3:case 6: result=address;break;
-                case 1:case 4:case 5:{
-                    Random random = new Random();
-                    result=address+10+random.nextInt(10);
+                case 0:case 2:case 3:case 6:
+                {
+                    result=baseAddress+2*random.nextInt(2);
+                    baseAddress=result;
                     break;
-                }
+                }//顺序编址：地址为基地址或基地址+2
+                case 1:case 4:case 5:{
+                    result= 10+random.nextInt(11);
+                    break;
+                }//跳跃：地址为10-20随机数
                 default:break;
             }
             return result;
         }
-
+         public static boolean getOrderTypeByState(int state)
+        {
+            boolean result = false;
+            switch (state)
+            {
+                case 0:case 2:case 3:case 6: {
+                    result=true;
+                    break;
+                }//顺序编址：地址为基地址或基地址+2
+                case 1:case 4:case 5:{
+                    result= false;
+                    break;
+                }//跳跃：地址为10-20随机数
+                    default:break;
+                }
+            return result;
+        }
         public static int getInstructsTypeNum() {
             return instructsTypeNum;
         }
@@ -93,5 +114,7 @@ public enum InstructTypes {
             this.description = description;
         }
 
+        public static void main(String[] args) {
 
+        }
 }

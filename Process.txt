@@ -1,128 +1,32 @@
-发生高级调度
-1号作业被创建为进程
 
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 4
-State: Instruct
-id	state	times
-1	3	1
-2	4	1
-3	6	1
-4	3	1
-Present Length: 1
+CPU空闲等待
 
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 5
-State: Instruct
-id	state	times
-5	0	1
-6	1	1
-7	3	1
-8	4	1
-Present Length: 2
+系统时间359s
 
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 6
-State: Instruct
-id	state	times
-9	2	1
-10	0	1
-11	1	1
-12	3	1
-Present Length: 3
+CPU等待
 
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 7
-State: Instruct
-id	state	times
-13	4	1
-14	3	1
-15	6	1
-16	4	1
-Present Length: 4
+CPU空闲等待
 
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 8
-State: Instruct
-id	state	times
-17	6	1
-18	0	1
-19	6	1
-20	5	1
-Present Length: 5
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 9
-State: Instruct
-id	state	times
-21	3	1
-22	2	1
-23	3	1
-24	5	1
-Present Length: 6
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 10
-State: Instruct
-id	state	times
-25	1	1
-26	6	1
-27	6	1
-28	0	1
-Present Length: 7
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:1
-ProID: 1
-PageNum: 11
-State: Instruct
-id	state	times
-29	6	1
-Present Length: 8
-进程调度选择1号进程
-
-CPU正在执行指令的相关信息
-
-ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
-
-1		1		29		4		3		0
-
-进程进入阻塞队列
 系统时间2s
-执行的作业：1
-执行的进程：1
-剩余时间：5
 
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
-时间片
-5
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间360s
+
+CPU等待
 
 CPU空闲等待
 
 系统时间3s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间361s
 
 CPU等待
 
@@ -134,7 +38,83 @@ CPU等待
 
 CPU空闲等待
 
+系统时间362s
+
+CPU等待
+发生高级调度
+1号作业被创建为进程
+
+CPU空闲等待
+
 系统时间5s
+
+CPU等待
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 3
+State: Instruct
+id	state	times
+13	4	1
+14	3	1
+15	6	1
+16	4	1
+Present Length: 1
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 4
+State: Instruct
+id	state	times
+17	6	1
+18	0	1
+19	6	1
+20	5	1
+Present Length: 2
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 5
+State: Instruct
+id	state	times
+21	3	1
+22	2	1
+23	3	1
+24	5	1
+Present Length: 3
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 6
+State: Instruct
+id	state	times
+25	1	1
+26	6	1
+27	6	1
+28	0	1
+Present Length: 4
+
+为进程分配交换区:
+该物理块包含的指令有:
+Time:5
+ProID: 1
+PageNum: 7
+State: Instruct
+id	state	times
+29	6	1
+Present Length: 5
+
+CPU空闲等待
+
+系统时间363s
 
 CPU等待
 进程调度选择1号进程
@@ -158,7 +138,20 @@ Device1: 0	Device2: 0
 
 CPU空闲等待
 
+系统时间364s
+
+CPU等待
+
+CPU空闲等待
+
 系统时间7s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间365s
 
 CPU等待
 
@@ -170,7 +163,19 @@ CPU等待
 
 CPU空闲等待
 
+系统时间366s
+
+CPU等待
+
+CPU空闲等待
+
 系统时间9s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间367s
 
 CPU等待
 发生高级调度
@@ -180,80 +185,47 @@ CPU等待
 该物理块包含的指令有:
 Time:10
 ProID: 2
-PageNum: 34
-State: Instruct
-id	state	times
-1	5	1
-2	3	1
-3	0	1
-4	1	1
-Present Length: 9
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:10
-ProID: 2
-PageNum: 35
-State: Instruct
-id	state	times
-5	3	1
-6	4	1
-7	4	1
-8	5	1
-Present Length: 10
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:10
-ProID: 2
-PageNum: 36
-State: Instruct
-id	state	times
-9	5	1
-10	3	1
-11	5	1
-12	2	1
-Present Length: 11
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:10
-ProID: 2
-PageNum: 37
+PageNum: 3
 State: Instruct
 id	state	times
 13	2	1
 14	4	1
 15	3	1
 16	2	1
-Present Length: 12
+Present Length: 6
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:10
 ProID: 2
-PageNum: 38
+PageNum: 4
 State: Instruct
 id	state	times
 17	2	1
 18	1	1
 19	0	1
 20	4	1
-Present Length: 13
+Present Length: 7
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:10
 ProID: 2
-PageNum: 39
+PageNum: 5
 State: Instruct
 id	state	times
 21	5	1
-Present Length: 14
+Present Length: 8
 
 CPU空闲等待
 
 系统时间10s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间368s
 
 CPU等待
 进程调度选择2号进程
@@ -274,15 +246,21 @@ ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 Device1: 0	Device2: 0
 时间片
 5
+
+CPU空闲等待
+
+系统时间369s
+
+CPU等待
 进程调度选择1号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		5		0		0
+1		1		29		4		3		0
 
-指令执行完
+进程进入阻塞队列
 系统时间12s
 执行的作业：1
 执行的进程：1
@@ -292,24 +270,25 @@ ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 Device1: 0	Device2: 0
 时间片
 5
-当前进程继续执行！
+后备作业队列为空！
 
-CPU正在执行指令的相关信息
+CPU空闲等待
 
-ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+系统时间370s
 
-1		1		29		4		3		0
+CPU等待
 
-进程进入阻塞队列
+CPU空闲等待
+
 系统时间13s
-执行的作业：1
-执行的进程：1
-剩余时间：4
 
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
-时间片
-4
+CPU等待
+
+CPU空闲等待
+
+系统时间371s
+
+CPU等待
 
 CPU空闲等待
 
@@ -319,7 +298,19 @@ CPU等待
 
 CPU空闲等待
 
+系统时间372s
+
+CPU等待
+
+CPU空闲等待
+
 系统时间15s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间373s
 
 CPU等待
 进程调度选择1号进程
@@ -328,7 +319,7 @@ CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		2		4		0
+1		1		29		5		0		0
 
 指令执行完
 系统时间16s
@@ -342,13 +333,19 @@ Device1: 0	Device2: 0
 5
 当前进程继续执行！
 
+CPU空闲等待
+
+系统时间374s
+
+CPU等待
+
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		3		6		0
+1		1		29		4		3		0
 
-进程等待FULL,进入阻塞
+进程进入阻塞队列
 系统时间17s
 执行的作业：1
 执行的进程：1
@@ -358,6 +355,13 @@ ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 Device1: 0	Device2: 0
 时间片
 4
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间375s
+
+CPU等待
 
 CPU空闲等待
 
@@ -367,7 +371,19 @@ CPU等待
 
 CPU空闲等待
 
+系统时间376s
+
+CPU等待
+
+CPU空闲等待
+
 系统时间19s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间377s
 
 CPU等待
 发生高级调度
@@ -377,106 +393,73 @@ CPU等待
 该物理块包含的指令有:
 Time:20
 ProID: 3
-PageNum: 64
-State: Instruct
-id	state	times
-1	2	1
-2	6	1
-3	6	1
-4	5	1
-Present Length: 15
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:20
-ProID: 3
-PageNum: 65
-State: Instruct
-id	state	times
-5	6	1
-6	0	1
-7	5	1
-8	1	1
-Present Length: 16
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:20
-ProID: 3
-PageNum: 66
-State: Instruct
-id	state	times
-9	4	1
-10	4	1
-11	0	1
-12	3	1
-Present Length: 17
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:20
-ProID: 3
-PageNum: 67
+PageNum: 3
 State: Instruct
 id	state	times
 13	2	1
 14	2	1
 15	6	1
 16	5	1
-Present Length: 18
+Present Length: 9
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:20
 ProID: 3
-PageNum: 68
+PageNum: 4
 State: Instruct
 id	state	times
 17	4	1
 18	1	1
 19	3	1
 20	6	1
-Present Length: 19
+Present Length: 10
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:20
 ProID: 3
-PageNum: 69
+PageNum: 5
 State: Instruct
 id	state	times
 21	0	1
 22	5	1
 23	6	1
 24	0	1
-Present Length: 20
+Present Length: 11
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:20
 ProID: 3
-PageNum: 70
+PageNum: 6
 State: Instruct
 id	state	times
 25	3	1
 26	1	1
 27	3	1
 28	2	1
-Present Length: 21
+Present Length: 12
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:20
 ProID: 3
-PageNum: 71
+PageNum: 7
 State: Instruct
 id	state	times
 29	2	1
-Present Length: 22
+Present Length: 13
 
 CPU空闲等待
 
 系统时间20s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间378s
 
 CPU等待
 进程调度选择3号进程
@@ -497,46 +480,71 @@ ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 Device1: 0	Device2: 0
 时间片
 5
-进程调度选择2号进程
+
+CPU空闲等待
+
+系统时间379s
+
+CPU等待
+进程调度选择1号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-2		2		21		4		1		0
+1		1		29		2		4		0
 
 指令执行完
 系统时间22s
-执行的作业：2
-执行的进程：2
+执行的作业：1
+执行的进程：1
 剩余时间：5
 
 当前进程占用的设备资源：
-Device1: 1	Device2: 0
+Device1: 0	Device2: 0
 时间片
 5
 当前进程继续执行！
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间380s
+
+CPU等待
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-2		2		21		2		3		0
+1		1		29		3		6		0
 
-进程进入阻塞队列
+进程等待FULL,进入阻塞
 系统时间23s
-执行的作业：2
-执行的进程：2
+执行的作业：1
+执行的进程：1
 剩余时间：4
 
 当前进程占用的设备资源：
-Device1: 1	Device2: 0
+Device1: 0	Device2: 0
 时间片
 4
 
 CPU空闲等待
 
+系统时间381s
+
+CPU等待
+
+CPU空闲等待
+
 系统时间24s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间382s
 
 CPU等待
 发生高级调度
@@ -546,97 +554,52 @@ CPU等待
 该物理块包含的指令有:
 Time:25
 ProID: 4
-PageNum: 94
-State: Instruct
-id	state	times
-1	4	1
-2	4	1
-3	2	1
-4	4	1
-Present Length: 23
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:25
-ProID: 4
-PageNum: 95
-State: Instruct
-id	state	times
-5	6	1
-6	1	1
-7	3	1
-8	3	1
-Present Length: 24
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:25
-ProID: 4
-PageNum: 96
-State: Instruct
-id	state	times
-9	3	1
-10	5	1
-11	2	1
-12	0	1
-Present Length: 25
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:25
-ProID: 4
-PageNum: 97
+PageNum: 3
 State: Instruct
 id	state	times
 13	1	1
 14	1	1
 15	2	1
 16	5	1
-Present Length: 26
+Present Length: 14
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:25
 ProID: 4
-PageNum: 98
+PageNum: 4
 State: Instruct
 id	state	times
 17	4	1
 18	1	1
 19	6	1
 20	5	1
-Present Length: 27
+Present Length: 15
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:25
 ProID: 4
-PageNum: 99
+PageNum: 5
 State: Instruct
 id	state	times
 21	4	1
 22	2	1
 23	0	1
 24	3	1
-Present Length: 28
+Present Length: 16
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:25
 ProID: 4
-PageNum: 100
+PageNum: 6
 State: Instruct
 id	state	times
 25	2	1
 26	6	1
-Present Length: 29
+Present Length: 17
 后备作业队列为空！
-
-CPU空闲等待
-
-系统时间25s
-
-CPU等待
 进程调度选择4号进程
 
 CPU正在执行指令的相关信息
@@ -646,7 +609,7 @@ ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 4		4		26		4		4		0
 
 进程等待mutex，进入阻塞
-系统时间26s
+系统时间25s
 执行的作业：4
 执行的进程：4
 剩余时间：5
@@ -655,16 +618,22 @@ ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 Device1: 0	Device2: 0
 时间片
 5
+
+CPU空闲等待
+
+系统时间383s
+
+CPU等待
 进程调度选择2号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-2		2		21		3		0		0
+2		2		21		4		1		0
 
 指令执行完
-系统时间27s
+系统时间26s
 执行的作业：2
 执行的进程：2
 剩余时间：5
@@ -675,6 +644,98 @@ Device1: 1	Device2: 0
 5
 当前进程继续执行！
 
+CPU空闲等待
+
+系统时间384s
+
+CPU等待
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		21		2		3		0
+
+进程进入阻塞队列
+系统时间27s
+执行的作业：2
+执行的进程：2
+剩余时间：4
+
+当前进程占用的设备资源：
+Device1: 1	Device2: 0
+时间片
+4
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间385s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间28s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间386s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间29s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间387s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间30s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间388s
+
+CPU等待
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		21		3		0		0
+
+指令执行完
+系统时间31s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+
+当前进程占用的设备资源：
+Device1: 1	Device2: 0
+时间片
+5
+当前进程继续执行！
+
+CPU空闲等待
+
+系统时间389s
+
+CPU等待
+
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
@@ -682,7 +743,7 @@ ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 2		2		21		4		1		0
 
 指令执行完
-系统时间28s
+系统时间32s
 执行的作业：2
 执行的进程：2
 剩余时间：4
@@ -692,3 +753,388 @@ Device1: 2	Device2: 0
 时间片
 4
 当前进程继续执行！
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间390s
+
+CPU等待
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		21		4		1		0
+
+指令执行完
+系统时间33s
+执行的作业：2
+执行的进程：2
+剩余时间：3
+
+当前进程占用的设备资源：
+Device1: 3	Device2: 0
+时间片
+3
+当前进程继续执行！
+
+CPU空闲等待
+
+系统时间391s
+
+CPU等待
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		21		4		1		0
+
+系统时间34s
+执行的作业：2
+执行的进程：2
+剩余时间：2
+
+当前进程占用的设备资源：
+Device1: 3	Device2: 0
+时间片
+2
+
+CPU空闲等待
+
+系统时间392s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间35s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间393s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间36s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间394s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间37s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间395s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间38s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间396s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间39s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间397s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间40s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间398s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间41s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间399s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间42s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间400s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间43s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间401s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间44s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间402s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间45s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间403s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间46s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间404s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间47s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间405s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间48s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间406s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间49s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间407s
+
+CPU等待
+
+Memory Page Out,Clear this Space
+Time:49
+ProID: 2
+PageNum: 0
+State: Instruct
+id	state	times
+1	5	1
+2	3	1
+3	0	1
+4	1	1
+Present Length: 18
+
+Memory Page Out,Clear this Space
+Time:49
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 19
+
+Memory Page Out,Clear this Space
+Time:49
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 20
+
+Process lock,Clear this Space
+Time:49
+ProID: 2
+PageNum: 3
+State: Instruct
+id	state	times
+13	2	1
+14	4	1
+15	3	1
+16	2	1
+Present Length: 19
+
+Process lock,Clear this Space
+Time:49
+ProID: 2
+PageNum: 4
+State: Instruct
+id	state	times
+17	2	1
+18	1	1
+19	0	1
+20	4	1
+Present Length: 18
+
+Process lock,Clear this Space
+Time:49
+ProID: 2
+PageNum: 5
+State: Instruct
+id	state	times
+21	5	1
+Present Length: 17
+
+Process lock,Clear this Space
+Time:49
+ProID: 2
+PageNum: 0
+State: Instruct
+id	state	times
+1	5	1
+2	3	1
+3	0	1
+4	1	1
+Present Length: 16
+
+Memory Page Out,Clear this Space
+Time:407
+ProID: 2
+PageNum: 0
+State: Instruct
+id	state	times
+1	5	1
+2	3	1
+3	0	1
+4	1	1
+Present Length: 18
+
+Memory Page Out,Clear this Space
+Time:407
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 19
+
+Memory Page Out,Clear this Space
+Time:407
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 20
+
+Process lock,Clear this Space
+Time:407
+ProID: 2
+PageNum: 32
+State: Instruct
+id	state	times
+13	2	1
+14	4	1
+15	3	1
+16	2	1
+Present Length: 19
+
+Process lock,Clear this Space
+Time:407
+ProID: 2
+PageNum: 33
+State: Instruct
+id	state	times
+17	2	1
+18	1	1
+19	0	1
+20	4	1
+Present Length: 18
+
+Process lock,Clear this Space
+Time:407
+ProID: 2
+PageNum: 34
+State: Instruct
+id	state	times
+21	5	1
+Present Length: 17
+
+Process lock,Clear this Space
+Time:407
+ProID: 2
+PageNum: 0
+State: Instruct
+id	state	times
+1	5	1
+2	3	1
+3	0	1
+4	1	1
+Present Length: 16

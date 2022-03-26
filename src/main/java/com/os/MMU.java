@@ -48,7 +48,7 @@ public class MMU {
 		offset = Logical_address& 0x00000003;  //获得页偏移量 
 		pageNum = ((Logical_address) >> 2); // 获得页号
 		BufferedWriter output = new BufferedWriter(new FileWriter(new File("otherdate.txt"),true));
-		output.write("转化前的逻辑地址是："+logAddress+"\n");
+		output.write("进程"+management.cpu.pcb.pcb.ProID+"转化前的逻辑地址是："+logAddress+"\n");
 		if(( block = searchTLB(pageNum) ) != -1) {  //查找快表找到
 			Physical_address = (block << 2) + offset;  //拼接物理地址
 			Write_Frame.one.textArea[0].append("查找快表成功\n"); 
@@ -82,14 +82,13 @@ public class MMU {
 	   }
    }
  //MMU现场恢复函数
-   public void recover(PCB p) {  
-		page_regist.length = p.page_register.length;
+   public void recover(PCB p) {
 		page_regist.pageAddress = p.page_register.pageAddress;
 		clearTLB();
 		nowlength = 0;
 	}
    //查找快表	
-   public int searchTLB(int pageNum) {  
+   public int searchTLB(int pageNum) {
 		for(int i = 0; i < this.lengthtlb; i++) {
 			if(pageNum == tlb[i].pageNum && tlb[i].isuse) {
 				tlb[i].count++;          //访问次数加1
@@ -100,7 +99,7 @@ public class MMU {
 	}
    //当查找快表后发现无相关信息，查找页表
    public int searchPage(int pageNum) { 
-		return Memory.searchPage(page_regist.pageAddress,page_regist.length,pageNum);  //通过页表基址寄存器，查找页表所在的物理块号、长度以及逻辑页号
+		return Memory.searchPage(page_regist.pageAddress,pageNum);  //通过页表基址寄存器，查找页表所在的物理块号、长度以及逻辑页号
 	}
    //缺页异常
    public int ifright() {
@@ -138,11 +137,9 @@ public class MMU {
 class PageRegist{  //设定页表基址寄存器
 	
 	public int pageAddress;  //页表在第几个物理块
-	public int length;  //当前页表的长度
 	
 	public PageRegist() {  //初始化
 		this.pageAddress = -1;
-		this.length = 0;
 	}
 	public void set_ad(int address) {
 		this.pageAddress=address;
@@ -150,16 +147,10 @@ class PageRegist{  //设定页表基址寄存器
 	public int get_ad() {
 		return this.pageAddress;
 	}
-	public void set_length(int length) {
-		this.length=length;
-	}
-	public int get_length() {
-		return this.length;
-	}
 }
 
 class TLB{  //设定快表
-	
+
 	public int pageNum;  //页号
 	public int blockNum;  //物理块号：是指内存中的物理块号
 	public int count;  //访问次数

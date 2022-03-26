@@ -85,7 +85,7 @@ public class management {
     			}
     			else {  //正常执行
     				Write_Frame.one.textArea[0].append("\nCPU执行：" + nowTime + "\n");
-    				if(cpu.times <=0) {	//剩余时间片不足以执行当前指令
+    				if(cpu.times==0||cpu.times <(cpu.pcb.Ir[cpu.PC-1].time-cpu.pcb.Ir[cpu.PC-1].runedtime)) {	//剩余时间片不足以执行当前指令
     					irtime = 0;  //提前结束
     					//nowTime += irtime;
     					cpu.save();  //保护现场
@@ -108,15 +108,14 @@ public class management {
 						}//MMU获取物理地址，PC指向第i条指令，在指令数组坐标要减一
     					if(cpu.MDR == -1) {		//未找到地址
     						try {
-								if(pageInterrupt(cpu.pcb,(cpu.pcb.Ir[cpu.PC-1].L_Address >> 2)))  //缺页中断,从外存寻找进程的某一页调入内存
+								pageInterrupt(cpu.pcb,(cpu.pcb.Ir[cpu.PC-1].L_Address >> 2));  //缺页中断,从外存寻找进程的某一页调入内存
 									//return false;
-								cpu.pcb.pcb.page_register.length++;
+
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}  //新的页表项进入内存，需要将页表的长度加一
     						//这里还要同步更新MMU中的页地址寄存器
-    						cpu.mmu.page_regist.length++;
     						try {
 								cpu.MDR=cpu.mmu.l_to_p(cpu.pcb.Ir[cpu.PC-1].L_Address);
 							} catch (IOException e) {

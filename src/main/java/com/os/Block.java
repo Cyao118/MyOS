@@ -66,6 +66,8 @@ public class Block {
 	  this.count=0;
 	  this.irnum=0;
 	  this.file=null;
-	  this.Blockuse=0;	 
+	  this.Blockuse=0;
 	}
+
+
 }

@@ -1,5 +1,7 @@
 package com.os;
 
+import com.sun.org.apache.bcel.internal.generic.SWAP;
+
 import java.io.*;
 import java.util.*;
 
@@ -39,8 +41,12 @@ public class Memory {
 	public static int allocateSpace() {  //返回分配的物理号
 		
 		for(int i = 16; i < 64; i++) {  //总共有48个用户区的物理块
-			if(block[i].status == 0)   //当前物理块空闲,将当前物理块分给进程
+			if(block[i].get_Blockuse() == 0)   //当前物理块空闲,将当前物理块分给进程
+			{
+				block[i].set_Blockuse(1);
+				blockRemain--;
 				return i;
+			}
 		}
 		return -1;
 	}
@@ -57,30 +63,22 @@ public class Memory {
 		//state-1就是存放的页号！！
 		block[b].count = 1;
 		block[b].irnum = 0;  //这里要将指令的条数清零，因为在进行页面替换的时候，当前物理块的指令数为上一个物理块的指令数，会累加，会出错
-		switch(block[b].status) {
-			case 1:  //页表段,初始化页表
-				block[b].page = new LinkedList<Page>();
-				break;
-			case 2:  //控制段
-				//block[b].pcb = new Process();
-				block[b].pcb = p;  //将进程Process放入内存中？？？？？？？？
-				break;
-			case 3:  //数据段
-				block[b].data = p.data;  //存放数据段的数据（一个）
-				break;
-			case 4:  //堆栈段
-				block[b].stack = p.stack;  //存放堆栈段的数据（一个）
-				break;
-			default:  //代码段 >5
-				block[b].ir = new Instruct[4];  //指令数组，存放指令
-				int m = (j - 4) * 4;  //每页4条指令，当前页的第一条指令的id-1
-				for(int i = 0; i < 4 && ((m + i) < p.InstrucNum); i++) {
-					block[b].ir[i] = new Instruct();
-					block[b].ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address, p.Ir[m + i].getRunedtime());/////更改
-					block[b].irnum++;
-				}
-				break;
+		if(p.pcb.page_register.pageAddress == b||p.pcb.page_register.pageAddress == -1) {
+			block[b].page = new LinkedList<Page>();
+			p.pcb.page_register.pageAddress = b;
 		}
+		Memory.updatePage(p.pcb.page_register.pageAddress ,p.pcb.ProID,j,b);
+//		页表加一页
+
+		block[b].pcb = p;  //将进程Process放入内存中？？？？？？？？
+		block[b].ir = new Instruct[4];  //指令数组，存放指令
+		int m = j * 4;  //每页4条指令，当前页的第一条指令的id-1
+		for(int i = 0; i < 4 && ((m + i) < p.InstrucNum); i++) {
+			block[b].ir[i] = new Instruct();
+			block[b].ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address, p.Ir[m + i].getRunedtime());/////更改
+			block[b].irnum++;
+		}
+
 		//saveBlockFile(b,j,flag,p.pcb.page_register.length);  //将b号物理块的信息保存信息到文件中
 	}
 	
@@ -90,17 +88,15 @@ public class Memory {
 		
 		int b = p.pcb.page_register.pageAddress;  //该进程页表所在的物理块
 		int phy = -1;
-		for(int i = 0; i < p.pcb.page_register.length; i++) {  //进程页表里面所占物理块清空
+		for(int i = 0; i < block[b].page.size(); i++) {  //进程页表里面所占物理块清空
 			phy = block[b].page.get(i).blockNum;
-			
+			Swap.setBlock(block[b]);//数据传到外存
 			block[phy].clear();  //真是释放所占用的物理块，即清空物理块内的信息
 			//clearBlockFile(phy);  //将清空的信息存入文件
 			blockRemain++;  //可分配的物理块数++
 		}
 		//清除页表所占的物理块
-		block[b].clear();
-		//clearBlockFile(b);
-		blockRemain++;  //这里忘了将页表所占的物理块清除，剩余物理块数要加一！
+		block[b].page = null;
 	}
 	
 	public static void updatePage(int bnum,int proID,int j,int phy) throws IOException {  
@@ -120,14 +116,11 @@ public class Memory {
 			if((p = Thequeue.pcb_table.get(i)).pcb.ProID == proID)
 				break;
 		}
-		int length = p.pcb.page_register.length;
 		int add = p.pcb.page_register.pageAddress;
-		for(; j < length; j++) {
+		for(; j < block[add].page.size(); j++) {
 			if(block[add].page.get(j).pageNum == page) {
 				block[add].page.remove(j);  //删除页表项
 				block[add].count++;  //访问页表，次数++
-				p.pcb.page_register.length--;  //删除页表项，长度减一
-				length--;
 				Thequeue.pcb_table.set(i, p);
 				break;
 			}
@@ -136,15 +129,15 @@ public class Memory {
 	}
 	
 	public Instruct readIR(int add) {  //读取指令，传进来的是物理地址
-		
+		System.out.println(add);
 		block[add >> 2].count++;  //add>>2是物理块号。访问次数加1
 		return block[add >> 2].ir[add & 0x00000003];
 	}
 	
-	public static  int searchPage(int pageblock,int length,int pageNum) {  //在pageBlock物理块中存放页表，查找页表的信息
+	public static  int searchPage(int pageblock,int pageNum) {  //在pageBlock物理块中存放页表，查找页表的信息
 	
 		Page p=new Page();
-		for(int i = 0; i < length; i++) {  //遍历页表项
+		for(int i = 0; i < block[pageblock].page.size(); i++) {  //遍历页表项
 			
 			if(( p = block[pageblock].page.get(i) ).pageNum == pageNum) {  //找到
 				block[pageblock].count++;  //访问页表所在物理块的次数加1

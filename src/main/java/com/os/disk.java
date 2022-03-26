@@ -6,7 +6,7 @@ import java.util.*;
 class SwapBlock {  //交换区模拟外存缓冲区
 	
 	public int proID;  //该物理块中存放的第几号进程
-	public int state;  //物理块中存放的类型：0空闲，1页表，2控制段，3数据，4堆栈，5代码（指令）
+	public int state;  //进程的第几页，i+1
 	public Instruct[] ir;  //指令数组，存放指令
 	public int irnum;  //存放的指令条数
 	
@@ -20,17 +20,17 @@ class SwapBlock {  //交换区模拟外存缓冲区
 	public void setSwap(Process p, int j) throws IOException {  
 		
 		this.proID = p.pcb.ProID;  //该物理块中存放的第几号进程
-		this.state =(p.pcb.ProID-1)*30+j+ 1;  //物理块中存放的类型：0空闲，1控制段，2页表，3数据，4堆栈，5代码（指令）
+		this.state = j+1;  //物理块中存放的类型：0空闲，1控制段，2页表，3数据，4堆栈，5代码（指令）
 		this.ir = new Instruct[4];  //指令数组，存放指令
 		this.irnum = 0;
-		int m = (j - 4) * 4;//定位指令第几页：已出现几条指令
+		int m = j * 4;//定位指令第几页：已出现几条指令
 		for(int i = 0; i < 4 && ((m + i) < p.InstrucNum); i++) {
 			this.ir[i] = new Instruct();
 			this.ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address,p.Ir[m + i].getRunedtime());//add为相对于进程的第几页
 			this.irnum++;
 		}
 	}
-	
+
 	public void saveFile(int i,int length) throws IOException {
 		File file = new File("Process.txt");
 		FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
@@ -77,7 +77,7 @@ class SwapBlock {  //交换区模拟外存缓冲区
 	public static void setBlock(Block b) throws IOException {  //把内存b号物理块中的信息保存到外存
 		SwapBlock sw = new SwapBlock();  //申请一块外存空间
 		sw.proID = b.proid;  //该物理块中存放的第几号进程
-		sw.state = b.status;  
+		sw.state = b.status;
 		sw.ir = new Instruct[4];  //指令数组，存放指令
 		sw.irnum = 0;
 		for(int i = 0; i < b.irnum; i++) {   //这是从物理块中直接复制，只有四条指令，不用计算起始指令，直接赋值即可
@@ -105,7 +105,7 @@ class SwapBlock {  //交换区模拟外存缓冲区
 		page++;  //page++为保存的state的值
 		for(int i = 0; i < swapTable.size(); i++) {
 			sb=swapTable.get(i);
-			if((swapTable.get(i)).proID == proID && (sb.state-(proID-1)*30) == page) {
+			if((swapTable.get(i)).proID == proID && (sb.state-1) == page) {
 				return sb;
 			} 
 		}

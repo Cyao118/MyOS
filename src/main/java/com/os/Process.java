@@ -139,8 +139,6 @@ public class Process{
       public int nowd1;//已获得资源数
       public int d2;
       public int nowd2;
-      public int data;//进程数据段信息
-      public int stack;//堆栈段信息
 	  public int InstrucNum;//指令数目
       public Instruct[] Ir;  //代码段具体内容指令数组
       public PCB pcb;
@@ -157,51 +155,55 @@ public class Process{
   		this.pcb.ProID=n;//n
   		this.pcb.set_Priority(job.priority);
   		this.pcb.createtime = management.nowTime;  //进程创建时间
-		this.pcb.RunTimes = 0;  
-		//设置数据段信息
-		this.data =this.pcb.ProID* 10;  
-		//设置堆栈段中信息
-	    this.stack = this.pcb.ProID * 100; 
+		this.pcb.RunTimes = 0;
+
 	    //代码段存放的信息
 	  		this.pcb.instructID= job.psw;  //当前运行指令ID
 	  		this.InstrucNum = job.instructNum;  //指令数目
 	  		if(this.InstrucNum % 4 == 0)
-	  			this.pcb.prosize = this.InstrucNum / 4 + 4;  //进程有多少页,初定每页4条指令，向上取整;
+	  			this.pcb.prosize = this.InstrucNum / 4 ;  //进程有多少页,初定每页4条指令，向上取整;
 	  		else
-	  			this.pcb.prosize = this.InstrucNum / 4 + 5;
+	  			this.pcb.prosize = this.InstrucNum / 4 + 1;
 	  		this.Ir = new Instruct[InstrucNum];  //具体内容的指令数组
-		  	int baseAddress = 4<<2;//指令从4号页开始存放（第5页）
 	  		for(int i = 1; i <= this.InstrucNum; i++) {  //确定n条指令的成员，指令编号从1开始
 	  			this.Ir[i - 1] = new Instruct();
-	  			this.Ir[i - 1].setir(i, job.IR[i - 1].get_State(),baseAddress+job.IR[i - 1].getL_Address(),job.IR[i - 1].getRunedtime());//指令编号，指令状态，指令地址
+	  			this.Ir[i - 1].setir(i, job.IR[i - 1].get_State(),job.IR[i - 1].getL_Address(),job.IR[i - 1].getRunedtime());//指令编号，指令状态，指令地址
 
 	  		}
 	  		this.pcb.blocktimes=0;
-	  		this.pcb.page_register.length=0;
 	  		this.d1=job.d1;
 	  		this.d2=job.d2;
 	  		this.nowd1 = 0;
 			this.nowd2 = 0;
-			//为进程分配内存空间-------分配控制段+数据段+页表+堆栈，共4页 + 指令所占页面数
+			//为进程分配内存空间-------分配指令所占页面数
 			//页表的长度不包括页表本身所在的物理块那一页表项
 			int phy = -1;  //获得的物理块号
 			int j = 0;
-			for(; j < 4; j++) {  //假设一开始所有的进程都不放指令//指令都在外存不在内存
-				if(( phy = Memory.allocateSpace() ) != -1) {  //内存中找到空闲页，可以分配
-					if(j == 0) {  //此时是为页表分配空间的时候，将页表的物理块号提前记下
-						this.pcb.page_register.pageAddress = phy;  //页表所在内存的物理块号
-					}
-					Memory.modifyBlock(this,j,phy,true);  //修改物理块号信息
-					if(j != 0) {  //除了页表以外的其它页，需要将分配信息放到页表中
-						Memory.updatePage(this.pcb.page_register.pageAddress ,this.pcb.ProID,j,phy);  //直接在内存中写入页表的信息
-						this.pcb.page_register.length++;  //写入一个页表项，就加1！
+			if(this.pcb.prosize>3) {
+				for (; j < 3; j++) {  //一开始进程只分配三页
+					if ((phy = Memory.allocateSpace()) != -1) {  //内存中找到空闲页，可以分配
+						if (j == 0) {  //此时是为页表分配空间的时候，将页表的物理块号提前记下
+							this.pcb.page_register.pageAddress = phy;  //页表所在内存的物理块号
+						}
+						Memory.modifyBlock(this, j, phy, true);  //修改物理块号信息
 					}
 				}
+				for (; j < this.pcb.prosize; j++) {  //剩余页面放入外存交换区
+					management.swap.allocate(this, j); //第proID号进程的第J号页面送入交换区
+					Write_Frame.one.textArea[0].append("第" + j + "页进入外存交换区！\n");
+				}
 			}
-			for(; j < this.pcb.prosize; j++) {  //剩余页面放入外存交换区
-				management.swap.allocate(this,j); //第proID号进程的第J号页面送入交换区
-				Write_Frame.one.textArea[0].append("第" + j + "页进入外存交换区！\n");
-			}
+			else
+			  {
+				  for (; j < this.pcb.prosize; j++) {  //一开始进程只分配三页
+					  if ((phy = Memory.allocateSpace()) != -1) {  //内存中找到空闲页，可以分配
+						  if (j == 0) {  //此时是为页表分配空间的时候，将页表的物理块号提前记下
+							  this.pcb.page_register.pageAddress = phy;  //页表所在内存的物理块号
+						  }
+						  Memory.modifyBlock(this, j, phy, true);  //修改物理块号信息
+					  }
+				  }
+			  }
 			
   		//使用形式a=processCreate(a);
   		//return a;

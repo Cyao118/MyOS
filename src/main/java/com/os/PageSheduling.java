@@ -312,7 +312,7 @@ public class PageSheduling extends Thread {
     public void showmem() {
         int i=0;
         for(;i<64;i++) {
-            Write_Frame.one.textArea[1].append(mem.block[i].status+"  ");
+            Write_Frame.one.textArea[1].append(mem.block[i].get_Blockuse()+"  ");
             if((i+1)%8==0&&i!=0)
                 Write_Frame.one.textArea[1].append("\n");
         }

@@ -53,9 +53,6 @@ public class PageSheduling extends Thread {
                     }
 
 
-                    Write_Frame.one.textArea[0].append("当前Device的资源数量：\n");
-                    Write_Frame.one.textArea[0].append("Device1: " + deviceTable[0].value + "\tDevice2: " + deviceTable[1].value + "\n");
-
                     try {
                         showQueue();
                     } catch (IOException e1) {
@@ -173,7 +170,7 @@ public class PageSheduling extends Thread {
 
     public void deadlockRecover(int lock) throws IOException {  //死锁恢复,lock号进程放入作业队列
 
-        Write_Frame.one.textArea[0].append("死锁恢复：");
+        common.proresAppend("死锁恢复：");
 
         //从PCB表中删除该进程
         Process l = new Process();
@@ -207,7 +204,7 @@ public class PageSheduling extends Thread {
         swap.deletePro(l.pcb.ProID);
 
         //撤销占用的资源,找到当前进程所在的资源阻塞队列，从阻塞队列中出队
-        Write_Frame.one.textArea[0].append("进程" + l.pcb.ProID + "(作业" + l.JobID + ")释放" + l.nowd1 + "个1号资源！" + l.nowd2 + "个2号资源！\n");
+        common.proresAppend("进程" + l.pcb.ProID + "(作业" + l.JobID + ")释放" + l.nowd1 + "个1号资源！" + l.nowd2 + "个2号资源！\n");
         deviceTable[0].addValue(l.pcb.ProID,l.nowd1,1);
         deviceTable[1].addValue(l.pcb.ProID,l.nowd1,2);
         //this.deviceTable[2].addValue(l.pcb.ProID,l.d3num,3);
@@ -261,43 +258,30 @@ public class PageSheduling extends Thread {
             }
         }
 
-        for(int i = 0; i < 2; i++) {  //3个资源阻塞队列
-            Write_Frame.one.textArea[i+11].setText(" ");
-            Write_Frame.one.textArea[i+11].append("资源" + (i+1) + "：ProID\tjobID\n");
-
-            if(deviceTable[i].deviceQueue.size() >0) {
-                System.out.println("!!!!!");
-                for(int k = 0; k < deviceTable[i].deviceQueue.size(); k++) {
-                    t = deviceTable[i].deviceQueue.get(k);
-                    Write_Frame.one.textArea[i+11].append(t.pcb.ProID + "\t" + t.JobID+"\n");
-                }
-            }
-        }
-
-        if(management.source.mutexQueue.size() >= 0) {
+        if(management.source.screensQueue.size() >= 0) {
             Write_Frame.one.textArea[5].setText(" ");
-            Write_Frame.one.textArea[5].append("mutex阻塞队列：\nProID\tjobID\n");
-            for(int k = 0; k < management.source.mutexQueue.size(); k++) {
-                t = management.source.mutexQueue.get(k);
+            Write_Frame.one.textArea[5].append("屏幕阻塞队列：\nProID\tjobID\n");
+            for(int k = 0; k < management.source.screensQueue.size(); k++) {
+                t = management.source.screensQueue.get(k);
                 Write_Frame.one.textArea[5].append(t.pcb.ProID + "\t" +"\n");
             }
         }
 
-        if(management.source.fullQueue.size() >=0) {
+        if(management.source.keyboardsQueue.size() >=0) {
             Write_Frame.one.textArea[6].setText(" ");
-            Write_Frame.one.textArea[6].append("full阻塞队列：\nProID\tjobID\n");
-            for(int k = 0; k < management.source.fullQueue.size(); k++) {
-                t = management.source.fullQueue.get(k);
+            Write_Frame.one.textArea[6].append("键盘阻塞队列：\nProID\tjobID\n");
+            for(int k = 0; k < management.source.keyboardsQueue.size(); k++) {
+                t = management.source.keyboardsQueue.get(k);
                 Write_Frame.one.textArea[6].append(t.pcb.ProID + "\t" +"\n");
             }
         }
 
-        if(management.source.emptyQueue.size() >=0) {
-            Write_Frame.one.textArea[7].setText(" ");
-            Write_Frame.one.textArea[7].append("empty阻塞队列：\nProID\tjobID\n");
-            for(int k = 0; k < management.source.emptyQueue.size(); k++) {
-                t = management.source.emptyQueue.get(k);
-                Write_Frame.one.textArea[7].append(t.pcb.ProID + "\t" +"\n");
+        if(management.source.printersQueue.size() >=0) {
+            Write_Frame.one.textArea[11].setText(" ");
+            Write_Frame.one.textArea[11].append("打印阻塞队列：\nProID\tjobID\n");
+            for(int k = 0; k < management.source.printersQueue.size(); k++) {
+                t = management.source.printersQueue.get(k);
+                Write_Frame.one.textArea[11].append(t.pcb.ProID + "\t" +"\n");
             }
         }
         if(Thequeue.hang.size()>=0) {
@@ -308,6 +292,25 @@ public class PageSheduling extends Thread {
                 Write_Frame.one.textArea[10].append(t.pcb.ProID + "\t" +"\n");
             }
         }
+
+        if(management.source.readsQueue.size() >= 0) {
+            Write_Frame.one.textArea[12].setText(" ");
+            Write_Frame.one.textArea[12].append("读磁盘阻塞队列：\nProID\tjobID\n");
+            for(int k = 0; k < management.source.readsQueue.size(); k++) {
+                t = management.source.readsQueue.get(k);
+                Write_Frame.one.textArea[12].append(t.pcb.ProID + "\t" +"\n");
+            }
+        }
+
+        if(management.source.writesQueue.size() >= 0) {
+            Write_Frame.one.textArea[7].setText(" ");
+            Write_Frame.one.textArea[7].append("写磁盘阻塞队列：\nProID\tjobID\n");
+            for(int k = 0; k < management.source.writesQueue.size(); k++) {
+                t = management.source.writesQueue.get(k);
+                Write_Frame.one.textArea[7].append(t.pcb.ProID + "\t" +"\n");
+            }
+        }
+
     }
     public void showmem() {
         int i=0;

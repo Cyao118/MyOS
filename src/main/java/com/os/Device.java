@@ -8,7 +8,7 @@ public class Device {
 	public LinkedList<Process> deviceQueue;  //对应的阻塞队列
 	
 	public Device() {
-		value = 3;
+		value = 1;
 		deviceQueue = new LinkedList<Process>();
 	}
 	
@@ -33,7 +33,7 @@ public class Device {
 			//if(m == 3)
 				//p.nowd3++;
 			Thequeue.ready.add(p);  //从资源阻塞队列出来后进入系统的就绪队列
-			Write_Frame.one.textArea[0].append("进程" + p.pcb.ProID + "(作业" + p.JobID + ")从" + m + "号资源阻塞队列唤醒！\n");
+			common.proresAppend("进程" + p.pcb.ProID + "(作业" + p.JobID + ")从" + m + "号资源阻塞队列唤醒！\n");
 			deviceQueue.remove(0);
 		}
 		value += n;

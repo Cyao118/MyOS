@@ -75,10 +75,10 @@ public class CreatJobs {
 		    int Instruc_State = 0;
 		    if (PCB_num != 0 && !if_creatInstruc[j]) {
 			  int i = 0;
-			  int baseAddress = 0;
+			  int baseAddress = -1;
 			  Random r = new Random();
 			  for (;i < instruc_num[j];i++) {
-				Instruc_State = r.nextInt(7);
+				Instruc_State = r.nextInt(common.instructTypeNum);
 				int L_Address =InstructTypes.getLogicAddressByState(Instruc_State, baseAddress);
 				output.write(i+1+"\t\t"+Instruc_State+"\t\t"+L_Address+"\t\t"+InstructTypes.getInstructByState(Instruc_State).getRuntime()+"\n");
 				if(InstructTypes.getOrderTypeByState(Instruc_State))

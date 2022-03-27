@@ -7,7 +7,15 @@ import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 import java.util.Random;
 //根据地址线的大小确定指令为16位
 public class Instruct {
-    public int time=1;  //指令时间,每1s执行一条指令
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int time;  //指令时间,每1s执行一条指令
     int []Instructsize=new int[16];
     public int Instruct_ID; //指令编号
     public int Instruct_State;//指令类型
@@ -31,10 +39,11 @@ public class Instruct {
 		this.Instruct_State = -1;
 		this.L_Address = -1;
     }
-    public void setir(int id, int state, int add,int runedtime) {
+    public void setir(int id, int state, int add,int time,int runedtime) {
 		this.Instruct_ID = id;
 		this.Instruct_State = state;
 		this.L_Address = add;
+		this.time = time;
 		this.runedtime = runedtime;
 	}
     public Instruct get_Instruct() {
@@ -54,7 +63,7 @@ public class Instruct {
     }
     public void Creat_State() {
     	Random rand= new Random();
-    	this.Instruct_State=rand.nextInt(6);
+    	this.Instruct_State=rand.nextInt(common.instructTypeNum);
     }
 	public void clear() {//指令删除
 		this.Instruct_ID = -1;

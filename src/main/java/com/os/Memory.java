@@ -75,7 +75,7 @@ public class Memory {
 		int m = j * 4;  //每页4条指令，当前页的第一条指令的id-1
 		for(int i = 0; i < 4 && ((m + i) < p.InstrucNum); i++) {
 			block[b].ir[i] = new Instruct();
-			block[b].ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address, p.Ir[m + i].getRunedtime());/////更改
+			block[b].ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address,p.Ir[m + i].time, p.Ir[m + i].getRunedtime());/////更改
 			block[b].irnum++;
 		}
 
@@ -128,10 +128,8 @@ public class Memory {
 		//showPage(add,length);
 	}
 	
-	public Instruct readIR(int add) {  //读取指令，传进来的是物理地址
-		System.out.println(add);
+	public void readIR(int add) {  //读取指令，传进来的是物理地址
 		block[add >> 2].count++;  //add>>2是物理块号。访问次数加1
-		return block[add >> 2].ir[add & 0x00000003];
 	}
 	
 	public static  int searchPage(int pageblock,int pageNum) {  //在pageBlock物理块中存放页表，查找页表的信息

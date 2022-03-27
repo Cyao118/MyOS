@@ -1,5 +1,7 @@
 package com.os;
 
+import org.omg.CORBA.IRObject;
+
 import java.io.*;
 import java.io.BufferedWriter;
 import java.util.*;
@@ -55,7 +57,7 @@ public class management {
 				}
             	try {
 					Thread.sleep(1000);
-					Write_Frame.one.textArea[0].append("系统时间"+management.nowTime+"s\n");
+					common.proresAppend("系统时间"+management.nowTime+"s\n");
 					output.write("系统时间"+management.nowTime+"s\n");
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
@@ -65,7 +67,7 @@ public class management {
 					e.printStackTrace();
 				}
             	if(!cpu.Isuse) {  //现场恢复中CPU不忙，证明CPU空转，就绪队列中无进程可调入CPU
-    				Write_Frame.one.textArea[0].append("\nCPU等待\n");
+    				common.proresAppend("\nCPU等待\n");
     				try {
 						output.write("\nCPU等待\n");
 					} catch (IOException e1) {
@@ -84,13 +86,33 @@ public class management {
 					}   
     			}
     			else {  //正常执行
-    				Write_Frame.one.textArea[0].append("\nCPU执行：" + nowTime + "\n");
+    				common.proresAppend("\nCPU执行：" + nowTime + "\n");
+					if(cpu.PC>cpu.pcb.Ir.length) {  //当前进程执行完
+						cpu.save();
+						try {
+							cpu.pcb.ProcessCancel();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}//当前进程执行完毕，进程撤销原语撤销
+						//进程撤销释放资源，会有阻塞进程进入就绪队列！
+						common.proresAppend("进程执行完，进程撤销！\n");
+						try {
+							output.write("进程执行完，进程撤销！\n");
+
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						break;
+					}
+
     				if(cpu.times==0||cpu.times <(cpu.pcb.Ir[cpu.PC-1].time-cpu.pcb.Ir[cpu.PC-1].runedtime)) {	//剩余时间片不足以执行当前指令
     					irtime = 0;  //提前结束
     					//nowTime += irtime;
     					cpu.save();  //保护现场
     					Thequeue.ready.add(cpu.pcb);
-    					Write_Frame.one.textArea[0].append("当前运行进程时间片不足，进行进程切换\n");
+    					common.proresAppend("当前运行进程时间片不足，进行进程切换\n");
     					try {
 							output.write("当前运行进程时间片不足，进行进程切换\n");
 						} catch (IOException e) {
@@ -123,58 +145,48 @@ public class management {
 								e.printStackTrace();
 							}//MMU获取物理地址
     					}
-    					cpu.PC++;  
+
     					//这里保护现场是要保存pc加后的值！
     					//读取指令
-    					Instruct m = mem.readIR(cpu.MDR);
-    					cpu.IR.setir(m.Instruct_ID, m.Instruct_State, m.L_Address,m.runedtime);  //根据MDR中的物理地址读取内存获得指令
-    						
-    					try {
-							flag=cpu.Execute();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}  //cpu执行指令:0正常执行完，1P指令，2V指令，3阻塞，4关中断
-    						
-    					//输出执行信息
-    					irtime = cpu.IR.time;
-    					nowTime += irtime;
-    					Write_Frame.one.textArea[0].append("执行的作业：" + cpu.pcb.JobID+"\n");
+    					mem.readIR(cpu.MDR);
+    					Instruct m= cpu.pcb.Ir[cpu.PC-1];
+//    					System.out.println(""+nowTime+"\t"+cpu.pcb.pcb.ProID+"\t"+cpu.MDR+"\t"+cpu.pcb.pcb.instructID+'\t'+cpu.times);
+    					cpu.IR.setir(m.Instruct_ID, m.Instruct_State, m.L_Address,m.time,m.runedtime);  //根据MDR中的物理地址读取内存获得指令
+    					common.proresAppend("执行的作业：" + cpu.pcb.JobID+"\n");
     					try {
 							output.write("执行的作业：" + cpu.pcb.JobID+"\n");
 						} catch (IOException e6) {
 							// TODO Auto-generated catch block
 							e6.printStackTrace();
 						}
-    					Write_Frame.one.textArea[0].append("执行的进程：" + cpu.pcb.pcb.ProID+"\n");
+    					common.proresAppend("执行的进程：" + cpu.pcb.pcb.ProID+"\n");
     					try {
 							output.write("执行的进程：" + cpu.pcb.pcb.ProID+"\n");
 						} catch (IOException e5) {
 							// TODO Auto-generated catch block
 							e5.printStackTrace();
 						}
-    					Write_Frame.one.textArea[0].append("剩余时间：" + cpu.times+"\n");
+
+						try {
+							flag=cpu.Execute();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}  //cpu执行指令:0正常执行完，1P指令，2V指令，3阻塞，4关中断
+
+
+						//输出执行信息
+						irtime = cpu.IR.time;
+						nowTime += irtime;
+
+    					common.proresAppend("剩余时间：" + cpu.times+"\n");
     					try {
 							output.write("剩余时间：" + cpu.times+"\n");
 						} catch (IOException e4) {
 							// TODO Auto-generated catch block
 							e4.printStackTrace();
 						}
-    					Write_Frame.one.textArea[0].append("完成的指令：" + "id: " + cpu.IR.Instruct_ID + "\tstate: " + cpu.IR.Instruct_State + "\ttimes: " + cpu.IR.time + "\tadd: " + cpu.IR.L_Address);
-    					Write_Frame.one.textArea[0].append("\n当前进程占用的设备资源：\n");
-    					try {
-							output.write("\n当前进程占用的设备资源：\n");
-						} catch (IOException e3) {
-							// TODO Auto-generated catch block
-							e3.printStackTrace();
-						}
-    					Write_Frame.one.textArea[0].append("Device1: " + cpu.pcb.nowd1 + "\tDevice2: " + cpu.pcb.nowd2 + "\n");
-    					try {
-							output.write("Device1: " + cpu.pcb.nowd1 + "\tDevice2: " + cpu.pcb.nowd2 + "\n");
-						} catch (IOException e2) {
-							// TODO Auto-generated catch block
-							e2.printStackTrace();
-						}
+    					common.proresAppend("完成的指令：" + "\n指令ID（InstructId）: " + cpu.IR.Instruct_ID + "\n指令类型（InstructState）: " + cpu.IR.Instruct_State + "\n指令内容（InstructDescription）: " + InstructTypes.getInstructByState(cpu.IR.Instruct_State).getDescription() + "\n运行时间（InRunTimes）: " + InstructTypes.getInstructByState(cpu.IR.Instruct_State).getRuntime() +"\n已运行时间（InRunedTimes）: " + cpu.IR.runedtime+ "\n逻辑地址（L_Address）: " + cpu.IR.L_Address+"\n物理地址（_Address）:"+cpu.MDR+"\n");
     					//保存CPU信息到文件中
     					try {
 							saveFile(flag);
@@ -191,7 +203,7 @@ public class management {
 							e1.printStackTrace();
 						}
     					//判断指令的执行情况，0正常执行完当前指令，1进程执行完，2进程阻塞需要进行上下文切换
-    					if(flag == 0|cpu.PC > cpu.pcb.InstrucNum) {  //当前指令正常执行完
+    					if(flag == 0||cpu.PC > cpu.pcb.InstrucNum) {  //当前指令正常执行完
     						if(cpu.PC > cpu.pcb.InstrucNum) {  //当前进程执行完
     							cpu.save();
     							try {
@@ -201,7 +213,7 @@ public class management {
 									e.printStackTrace();
 								}//当前进程执行完毕，进程撤销原语撤销
     							//进程撤销释放资源，会有阻塞进程进入就绪队列！
-    							Write_Frame.one.textArea[0].append("进程执行完，进程撤销！\n");
+    							common.proresAppend("进程执行完，进程撤销！\n");
     							try {
 									output.write("进程执行完，进程撤销！\n");
 									
@@ -211,7 +223,7 @@ public class management {
 								}
     						}
     						else {
-    							Write_Frame.one.textArea[0].append("当前进程继续执行！\n");//如果进程没有执行完，只是指令执行完，不需要保护现场！！
+    							common.proresAppend("当前进程继续执行！\n");//如果进程没有执行完，只是指令执行完，不需要保护现场！！
     							try {
 									output.write("当前进程继续执行！\n");
 								} catch (IOException e) {
@@ -223,16 +235,20 @@ public class management {
     					else if(flag == 1) {   //当前进程需要进入普通阻塞队列
     						cpu.save();  //CPU现场保护
     						cpu.pcb.ProcessBlock();  //CPU中的进程进入阻塞队列
-    						Write_Frame.one.textArea[0].append("进程" + cpu.pcb.pcb.ProID +"(作业" + cpu.pcb.JobID + ")进入普通阻塞队列！\n");
+    						common.proresAppend("进程" + cpu.pcb.pcb.ProID +"(作业" + cpu.pcb.JobID + ")进入普通阻塞队列！\n");
     					}
     					else{  //P指令当前进程已经进入阻塞队列
     						//这里不需要做什么
-    						if(cpu.IR.Instruct_State == 6)
-    							Write_Frame.one.textArea[0].append("进程进入Full阻塞队列\n");
+							if(cpu.IR.Instruct_State == 2)
+								common.proresAppend("进程进入键盘输入阻塞队列\n");
+    						if(cpu.IR.Instruct_State == 3)
+    							common.proresAppend("进程进入屏幕显示阻塞队列\n");
     						if(cpu.IR.Instruct_State == 4)
-    							Write_Frame.one.textArea[0].append("进程进入Mutex阻塞队列\n");
-    						if(cpu.IR.Instruct_State == 8)
-    							Write_Frame.one.textArea[0].append("进程进入Empty阻塞队列\n");
+    							common.proresAppend("进程进入读磁盘阻塞队列\n");
+    						if(cpu.IR.Instruct_State == 5)
+    							common.proresAppend("进程进入写磁盘阻塞队列\n");
+							if(cpu.IR.Instruct_State == 6)
+								common.proresAppend("进程进入打印阻塞队列\n");
     						cpu.save();
     					}
     					cpu.times--;
@@ -272,10 +288,10 @@ public class management {
 						// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-					//Write_Frame.one.textArea[0].append("\n中断处理例程：" + nowTime + "\n");
+					//common.proresAppend("\n中断处理例程：" + nowTime + "\n");
 
 				if (Thequeue.pcb_table.size() == 0 && nowTime != 0 && jobTable.size() == 0) {  //进行过程中所有进程执行完毕
-						Write_Frame.one.textArea[0].append("所有进程执行完毕！\n");
+						common.proresAppend("所有进程执行完毕！\n");
 						try {
 							output.write("所有进程执行完毕！\n");
 						} catch (IOException e) {
@@ -296,7 +312,7 @@ public class management {
 							if (waitpcb != null) {
 								cpu.recover(waitpcb);  //现场恢复：指明CPU在忙
 								flag = 0;
-								Write_Frame.one.textArea[0].append("进程调度选择" + waitpcb.pcb.ProID + "号进程" + "\n");
+								common.proresAppend("进程调度选择" + waitpcb.pcb.ProID + "号进程" + "\n");
 								try {
 									output.write("进程调度选择" + waitpcb.pcb.ProID + "号进程" + "\n");
 								} catch (IOException e) {
@@ -305,7 +321,7 @@ public class management {
 								}
 							}
 						} else {  //此时阻塞队列为空
-							Write_Frame.one.textArea[0].append("就绪队列为空\n");
+							common.proresAppend("就绪队列为空\n");
 						}
 				}
 					try {
@@ -357,16 +373,18 @@ public class management {
 			fw.write("ID\tPri\tCreat\td1\td2\tirnum\tid\tstate\ttimes\tadd\r\n");
 			fw.close();
 		}
-		Write_Frame.one.textArea[0].append("正在读取作业：\n");
+		common.proresAppend("正在读取作业：\n");
 		runcpu two=new runcpu();
 		time one=new time();
 		scheduling three=new scheduling();
 		JobSheduling jobSheduling = new JobSheduling();
 		PageSheduling pageSheduling = new PageSheduling();
+		WakeSheduling wakeSheduling = new WakeSheduling();
 		readJob();  //从文件中读取全部作业，放入后备作业队列
 		three.start();
 		two.start();
 		one.start();
+		wakeSheduling.start();
 		jobSheduling.start();
 		pageSheduling.start();
 	}
@@ -430,22 +448,22 @@ public class management {
 				bp = pageReplace();  //页面替换算法，选中一页换出去，返回选中的物理块号
 				Swap.setBlock(Memory.block[bp]);  //将替换出去的物理块写到交换区
 				mem.deletePage(Memory.block[bp].proid,Memory.block[bp].status - 1);//被替换出去的写到外存交换区，同时还要删除替换出的那一块所属进程的页框表
-				Write_Frame.one.textArea[0].append("页面替换选择将" + bp + "号物理块的页面换出！\n");
+				common.proresAppend("页面替换选择将" + bp + "号物理块的页面换出！\n");
 				flag = false;
 			}
 			if(bp != -1) {  //内存中找到物理块
 				Memory.modifyBlock(p, page, bp, flag);  //更新物理块信息，将该页放入内存
 				//p.pcb.page_register.pageAddress=bp;//
 				Memory.updatePage(p.pcb.page_register.pageAddress,p.pcb.ProID,page,bp);  //写入该进程的页表（内存中）
-				Write_Frame.one.textArea[0].append("缺页中断将当前进程" + page + "号页面装入" + bp + "号物理块！\n");
+				common.proresAppend("缺页中断将当前进程" + page + "号页面装入" + bp + "号物理块！\n");
 			}
 			else {
-				Write_Frame.one.textArea[0].append("缺页中断，内存分配失败！\n");
+				common.proresAppend("缺页中断，内存分配失败！\n");
 				return false;  //程序终止！
 			}
 		}
 		else {  //外存上没有找到该页
-			Write_Frame.one.textArea[0].append("外存上不存在" + p.pcb.ProID + "号进程(作业" + p.JobID + ")的" + page + "号页！\n错误！\n");
+			common.proresAppend("外存上不存在" + p.pcb.ProID + "号进程(作业" + p.JobID + ")的" + page + "号页！\n错误！\n");
 			return false;  //程序错误，退出！！！！！！！！
 		}
 		return true;
@@ -534,10 +552,10 @@ public class management {
 			
 			j.IR[m].Instruct_State = Integer.parseInt(t[2]);
 
-			j.IR[m].L_Address = Integer.parseInt(t[6]);
+			j.IR[m].L_Address = Integer.parseInt(t[4]);
 
-//			j.IR[m].time = Integer.parseInt(t[6]);
-			j.IR[m].time = 0;
+			j.IR[m].time = Integer.parseInt(t[6]);
+
 
 
 			m++;

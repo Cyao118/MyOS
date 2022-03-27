@@ -167,7 +167,7 @@ public class Process{
 	  		this.Ir = new Instruct[InstrucNum];  //具体内容的指令数组
 	  		for(int i = 1; i <= this.InstrucNum; i++) {  //确定n条指令的成员，指令编号从1开始
 	  			this.Ir[i - 1] = new Instruct();
-	  			this.Ir[i - 1].setir(i, job.IR[i - 1].get_State(),job.IR[i - 1].getL_Address(),job.IR[i - 1].getRunedtime());//指令编号，指令状态，指令地址
+	  			this.Ir[i - 1].setir(i, job.IR[i - 1].get_State(),job.IR[i - 1].getL_Address(),job.IR[i - 1].getTime(),job.IR[i - 1].getRunedtime());//指令编号，指令状态，指令地址
 
 	  		}
 	  		this.pcb.blocktimes=0;
@@ -190,7 +190,7 @@ public class Process{
 				}
 				for (; j < this.pcb.prosize; j++) {  //剩余页面放入外存交换区
 					management.swap.allocate(this, j); //第proID号进程的第J号页面送入交换区
-					Write_Frame.one.textArea[0].append("第" + j + "页进入外存交换区！\n");
+					common.proresAppend("第" + j + "页进入外存交换区！\n");
 				}
 			}
 			else
@@ -217,11 +217,7 @@ public class Process{
 				break;
 			}
 		}
-		
-		//撤销占用的资源！
-		Write_Frame.one.textArea[0].append("进程" + this.pcb.ProID + "(作业" +this.JobID + ")释放" + this.nowd1 + "个1号资源," + this.nowd2 + "个2号资源！\n");
-		management.deviceTable[0].addValue(this.pcb.ProID,this.nowd1,1);
-		management.deviceTable[1].addValue(this.pcb.ProID,this.nowd2,2);
+
 		//Control.deviceTable[2].addValue(this.pcb.ProID,this.nowd3,3);
 		
 		//释放内存空间

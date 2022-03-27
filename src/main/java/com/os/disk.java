@@ -26,7 +26,7 @@ class SwapBlock {  //交换区模拟外存缓冲区
 		int m = j * 4;//定位指令第几页：已出现几条指令
 		for(int i = 0; i < 4 && ((m + i) < p.InstrucNum); i++) {
 			this.ir[i] = new Instruct();
-			this.ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address,p.Ir[m + i].getRunedtime());//add为相对于进程的第几页
+			this.ir[i].setir(m + i + 1, p.Ir[m + i].get_State(),p.Ir[m + i].L_Address,p.Ir[m + i].getTime(),p.Ir[m + i].getRunedtime());//add为相对于进程的第几页
 			this.irnum++;
 		}
 	}
@@ -82,7 +82,7 @@ class SwapBlock {  //交换区模拟外存缓冲区
 		sw.irnum = 0;
 		for(int i = 0; i < b.irnum; i++) {   //这是从物理块中直接复制，只有四条指令，不用计算起始指令，直接赋值即可
 			sw.ir[i] = new Instruct();
-			sw.ir[i].setir(b.ir[i].Instruct_ID, b.ir[i].get_State(),b.ir[i].L_Address,b.ir[i].getRunedtime());
+			sw.ir[i].setir(b.ir[i].Instruct_ID, b.ir[i].get_State(),b.ir[i].L_Address,b.ir[i].getTime(),b.ir[i].getRunedtime());
 			sw.irnum++;
 		}
 		length++;
@@ -102,7 +102,6 @@ class SwapBlock {  //交换区模拟外存缓冲区
 	public static SwapBlock search(int proID, int page) throws IOException {  //找到并删除
 		
 		SwapBlock sb = null;
-		page++;  //page++为保存的state的值
 		for(int i = 0; i < swapTable.size(); i++) {
 			sb=swapTable.get(i);
 			if((swapTable.get(i)).proID == proID && (sb.state-1) == page) {

@@ -51,21 +51,21 @@ public class MMU {
 		output.write("进程"+management.cpu.pcb.pcb.ProID+"转化前的逻辑地址是："+logAddress+"\n");
 		if(( block = searchTLB(pageNum) ) != -1) {  //查找快表找到
 			Physical_address = (block << 2) + offset;  //拼接物理地址
-			Write_Frame.one.textArea[0].append("查找快表成功\n"); 
+			common.proresAppend("查找快表成功\n");
 			output.write("查找快表成功\n转化后物理地址是："+Physical_address+"\n");
 			//文件输出
 			//界面输出
 		}
 		else {  //快表中未找到,则查页表
 			if(( block = searchPage(pageNum) ) == -1) {  //没有找到
-				Write_Frame.one.textArea[0].append("查找失败，产生缺页异常\n"); 
+				common.proresAppend("查找失败，产生缺页异常\n");
 				output.write("查找失败，产生缺页异常\n");
 				//文件输出
 				//界面输出
 				Physical_address= -1;  //物理地址为-1，缺页中断??
 			}
 			else {  //找到
-				Write_Frame.one.textArea[0].append("查找快表失败，查找页表成功\n"); 
+				common.proresAppend("查找快表失败，查找页表成功\n");
 				Physical_address = (block << 2) + offset;  //拼接物理地址
 				updateTLB(pageNum,block);  //更新快表信息
 				output.write("查找快表失败，查找页表成功\n转化后物理地址是："+Physical_address+"\n");

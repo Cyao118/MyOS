@@ -44,10 +44,10 @@ public enum InstructTypes {
             {
                 case 0:case 2:case 3:case 6:
                 {
-                    result=baseAddress+2*random.nextInt(2);
+                    result=baseAddress+1;
                     baseAddress=result;
                     break;
-                }//顺序编址：地址为基地址或基地址+2
+                }//顺序编址：地址为基地址+1
                 case 1:case 4:case 5:{
                     result= 10+random.nextInt(11);
                     break;
@@ -64,11 +64,11 @@ public enum InstructTypes {
                 case 0:case 2:case 3:case 6: {
                     result=true;
                     break;
-                }//顺序编址：地址为基地址或基地址+2
+                }
                 case 1:case 4:case 5:{
                     result= false;
                     break;
-                }//跳跃：地址为10-20随机数
+                }
                     default:break;
                 }
             return result;

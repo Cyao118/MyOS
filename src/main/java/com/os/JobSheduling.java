@@ -37,7 +37,7 @@ public class JobSheduling extends Thread {
                         //PCB、页表、数据段、堆栈段
                         job = jobSchedule();  //从作业表中选出下一个进入内存的作业(同时删除作业队列中的作业)
                         if(job == null) {
-                            Write_Frame.one.textArea[0].append("等待作业到达\n");
+                            common.proresAppend("等待作业到达\n");
                             try {
                                 Thread.sleep(1000);
                             } catch (InterruptedException e) {
@@ -48,7 +48,7 @@ public class JobSheduling extends Thread {
 
                         }
                         else {
-                            Write_Frame.one.textArea[0].append("发生高级调度\n" + job.jobid + "号作业被创建为进程\n");
+                            common.proresAppend("发生高级调度\n" + job.jobid + "号作业被创建为进程\n");
                             try {
                                 File fp = new File("Process.txt");
                                 BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));
@@ -74,14 +74,14 @@ public class JobSheduling extends Thread {
                             Thequeue.ready.add(p);  //进程进入就绪队列
                             Thequeue.pcb_table.add(p);//进程放入系统pcb表
                             job = null;  //作业已经创建完毕，释放
-                            Write_Frame.one.textArea[0].append("进程" + p.pcb.ProID + "(作业" + p.JobID + ")创建\n");
+                            common.proresAppend("进程" + p.pcb.ProID + "(作业" + p.JobID + ")创建\n");
 
                         }
 
                     }
                     //若无法创建进程，输出原因
                     if(nowTime%5==0&&mem.isallocate() >= 4 &&jobTable.size() <= 0) {
-                        Write_Frame.one.textArea[0].append("后备作业队列为空！\n");
+                        common.proresAppend("后备作业队列为空！\n");
                         try {
                             File fp = new File("Process.txt");
                             BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));
@@ -93,7 +93,7 @@ public class JobSheduling extends Thread {
                         }
                     }
                     if(nowTime%5==0&&mem.isallocate() < 4 && jobTable.size() > 0) {
-                        Write_Frame.one.textArea[0].append("内存空间不足！\n");
+                        common.proresAppend("内存空间不足！\n");
                         try {
                             File fp = new File("Process.txt");
                             BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));

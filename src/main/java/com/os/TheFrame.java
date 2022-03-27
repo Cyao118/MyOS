@@ -140,13 +140,13 @@ public class TheFrame{
 				  
 					  int i = 0;
 					  r = new Random();
-					  int baseAddress = 0;
+					  int baseAddress = -1;
 					  for (;i < job.instructNum;i++) {
 						  job.IR[i].Instruct_ID =i;
-						  Instruc_State = r.nextInt(7);
+						  Instruc_State = r.nextInt(common.instructTypeNum);
 						  job.IR[i].Instruct_State = Instruc_State;
 						  job.IR[i].L_Address = InstructTypes.getLogicAddressByState(Instruc_State, baseAddress);
-//						  job.IR[i].time = InstructTypes.getInstructByState(Instruc_State).getRuntime();
+						  job.IR[i].time = InstructTypes.getInstructByState(Instruc_State).getRuntime();
 						  output.write(i+1+"\t\t"+Instruc_State+"\t\t"+job.IR[i].L_Address+"\t\t"+job.IR[i].time+"\n");
 						  if(InstructTypes.getOrderTypeByState(Instruc_State))
 							  baseAddress = job.IR[i].L_Address;

@@ -1,20 +1,7 @@
 
 CPU空闲等待
 
-系统时间359s
-
-CPU等待
-
-CPU空闲等待
-
 系统时间2s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间360s
 
 CPU等待
 
@@ -26,95 +13,57 @@ CPU等待
 
 CPU空闲等待
 
-系统时间361s
-
-CPU等待
-
-CPU空闲等待
-
 系统时间4s
 
 CPU等待
 
 CPU空闲等待
 
-系统时间362s
+系统时间5s
 
 CPU等待
 发生高级调度
 1号作业被创建为进程
 
-CPU空闲等待
-
-系统时间5s
-
-CPU等待
-
 为进程分配交换区:
 该物理块包含的指令有:
-Time:5
+Time:6
 ProID: 1
 PageNum: 3
 State: Instruct
 id	state	times
-13	4	1
-14	3	1
-15	6	1
-16	4	1
+13	6	4
+14	1	2
+15	5	4
+16	5	4
 Present Length: 1
 
 为进程分配交换区:
 该物理块包含的指令有:
-Time:5
+Time:6
 ProID: 1
 PageNum: 4
 State: Instruct
 id	state	times
-17	6	1
-18	0	1
-19	6	1
-20	5	1
+17	5	4
+18	2	2
+19	3	3
+20	2	2
 Present Length: 2
 
 为进程分配交换区:
 该物理块包含的指令有:
-Time:5
+Time:6
 ProID: 1
 PageNum: 5
 State: Instruct
 id	state	times
-21	3	1
-22	2	1
-23	3	1
-24	5	1
+21	4	3
 Present Length: 3
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:5
-ProID: 1
-PageNum: 6
-State: Instruct
-id	state	times
-25	1	1
-26	6	1
-27	6	1
-28	0	1
-Present Length: 4
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:5
-ProID: 1
-PageNum: 7
-State: Instruct
-id	state	times
-29	6	1
-Present Length: 5
 
 CPU空闲等待
 
-系统时间363s
+系统时间6s
 
 CPU等待
 进程调度选择1号进程
@@ -123,37 +72,14 @@ CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		4		3		0
+1		1		21		1		3		0
 
-进程进入阻塞队列
-系统时间6s
+系统时间7s
 执行的作业：1
 执行的进程：1
 剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
 时间片
 5
-
-CPU空闲等待
-
-系统时间364s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间7s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间365s
-
-CPU等待
 
 CPU空闲等待
 
@@ -163,19 +89,7 @@ CPU等待
 
 CPU空闲等待
 
-系统时间366s
-
-CPU等待
-
-CPU空闲等待
-
 系统时间9s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间367s
 
 CPU等待
 发生高级调度
@@ -188,11 +102,11 @@ ProID: 2
 PageNum: 3
 State: Instruct
 id	state	times
-13	2	1
-14	4	1
-15	3	1
-16	2	1
-Present Length: 6
+13	4	3
+14	5	4
+15	4	3
+16	5	4
+Present Length: 4
 
 为进程分配交换区:
 该物理块包含的指令有:
@@ -201,11 +115,11 @@ ProID: 2
 PageNum: 4
 State: Instruct
 id	state	times
-17	2	1
-18	1	1
-19	0	1
-20	4	1
-Present Length: 7
+17	0	1
+18	0	1
+19	5	4
+20	3	3
+Present Length: 5
 
 为进程分配交换区:
 该物理块包含的指令有:
@@ -214,42 +128,13 @@ ProID: 2
 PageNum: 5
 State: Instruct
 id	state	times
-21	5	1
-Present Length: 8
+21	0	1
+22	5	4
+Present Length: 6
 
 CPU空闲等待
 
 系统时间10s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间368s
-
-CPU等待
-进程调度选择2号进程
-
-CPU正在执行指令的相关信息
-
-ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
-
-2		2		21		5		3		0
-
-进程进入阻塞队列
-系统时间11s
-执行的作业：2
-执行的进程：2
-剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
-时间片
-5
-
-CPU空闲等待
-
-系统时间369s
 
 CPU等待
 进程调度选择1号进程
@@ -258,25 +143,29 @@ CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		4		3		0
+1		1		21		2		6		0
 
-进程进入阻塞队列
-系统时间12s
+进程等待FULL,进入阻塞
+系统时间11s
 执行的作业：1
 执行的进程：1
 剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
 时间片
 5
-后备作业队列为空！
+进程调度选择2号进程
 
-CPU空闲等待
+CPU正在执行指令的相关信息
 
-系统时间370s
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-CPU等待
+2		2		22		1		5		0
+
+系统时间12s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
 
 CPU空闲等待
 
@@ -286,31 +175,54 @@ CPU等待
 
 CPU空闲等待
 
-系统时间371s
-
-CPU等待
-
-CPU空闲等待
-
 系统时间14s
 
 CPU等待
+发生高级调度
+3号作业被创建为进程
 
-CPU空闲等待
+为进程分配交换区:
+该物理块包含的指令有:
+Time:15
+ProID: 3
+PageNum: 3
+State: Instruct
+id	state	times
+13	3	3
+14	4	3
+15	3	3
+16	2	2
+Present Length: 7
 
-系统时间372s
+为进程分配交换区:
+该物理块包含的指令有:
+Time:15
+ProID: 3
+PageNum: 4
+State: Instruct
+id	state	times
+17	6	4
+18	2	2
+19	1	2
+20	0	1
+Present Length: 8
 
-CPU等待
+为进程分配交换区:
+该物理块包含的指令有:
+Time:15
+ProID: 3
+PageNum: 5
+State: Instruct
+id	state	times
+21	3	3
+22	3	3
+23	5	4
+24	1	2
+Present Length: 9
 
 CPU空闲等待
 
 系统时间15s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间373s
 
 CPU等待
 进程调度选择1号进程
@@ -319,147 +231,1040 @@ CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		5		0		0
+1		1		21		3		3		0
 
-指令执行完
 系统时间16s
 执行的作业：1
 执行的进程：1
 剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
 时间片
 5
-当前进程继续执行！
-
-CPU空闲等待
-
-系统时间374s
-
-CPU等待
+进程调度选择3号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		4		3		0
+3		3		24		1		5		0
 
-进程进入阻塞队列
 系统时间17s
-执行的作业：1
-执行的进程：1
-剩余时间：4
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
+执行的作业：3
+执行的进程：3
+剩余时间：5
 时间片
-4
-后备作业队列为空！
+5
+进程调度选择2号进程
 
-CPU空闲等待
+CPU正在执行指令的相关信息
 
-系统时间375s
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-CPU等待
-
-CPU空闲等待
+2		2		22		2		2		0
 
 系统时间18s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间376s
-
-CPU等待
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
 
 CPU空闲等待
 
 系统时间19s
 
 CPU等待
-
-CPU空闲等待
-
-系统时间377s
-
-CPU等待
+进程调度选择1号进程
 发生高级调度
-3号作业被创建为进程
+4号作业被创建为进程
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:20
-ProID: 3
+ProID: 4
 PageNum: 3
 State: Instruct
 id	state	times
-13	2	1
-14	2	1
-15	6	1
-16	5	1
-Present Length: 9
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:20
-ProID: 3
-PageNum: 4
-State: Instruct
-id	state	times
-17	4	1
-18	1	1
-19	3	1
-20	6	1
+13	6	4
+14	5	4
+15	1	2
+16	0	1
 Present Length: 10
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:20
-ProID: 3
-PageNum: 5
+ProID: 4
+PageNum: 4
 State: Instruct
 id	state	times
-21	0	1
-22	5	1
-23	6	1
-24	0	1
+17	2	2
+18	2	2
+19	4	3
+20	5	4
 Present Length: 11
 
 为进程分配交换区:
 该物理块包含的指令有:
 Time:20
-ProID: 3
-PageNum: 6
+ProID: 4
+PageNum: 5
 State: Instruct
 id	state	times
-25	3	1
-26	1	1
-27	3	1
-28	2	1
+21	3	3
+22	6	4
+23	0	1
+24	5	4
 Present Length: 12
+后备作业队列为空！
 
-为进程分配交换区:
-该物理块包含的指令有:
-Time:20
-ProID: 3
-PageNum: 7
-State: Instruct
-id	state	times
-29	2	1
-Present Length: 13
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		4		0		1
+
+指令执行完
+系统时间20s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		5		6		0
+
+进程等待FULL,进入阻塞
+系统时间22s
+执行的作业：1
+执行的进程：1
+剩余时间：4
+时间片
+4
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		3		2		0
+
+系统时间23s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		1		4		0
+
+进程等待mutex，进入阻塞
+系统时间24s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+进程调度选择3号进程
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		2		2		0
+
+系统时间25s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		4		3		0
+
+系统时间26s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		6		3		0
+
+系统时间27s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		3		1		2
+
+指令执行完
+系统时间28s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		3		1		2
+
+指令执行完
+系统时间31s
+执行的作业：3
+执行的进程：3
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		4		1		2
+
+指令执行完
+系统时间34s
+执行的作业：3
+执行的进程：3
+剩余时间：3
+时间片
+3
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		4		1		2
+
+指令执行完
+系统时间37s
+执行的作业：3
+执行的进程：3
+剩余时间：2
+时间片
+2
+当前进程继续执行！
+后备作业队列为空！
+系统时间40s
+当前运行进程时间片不足，进行进程切换
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		2		0		1
+
+指令执行完
+系统时间41s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		3		1		2
+
+指令执行完
+系统时间43s
+执行的作业：4
+执行的进程：4
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		3		1		2
+
+指令执行完
+系统时间46s
+执行的作业：4
+执行的进程：4
+剩余时间：3
+时间片
+3
+当前进程继续执行！
+系统时间49s
+当前运行进程时间片不足，进行进程切换
+进程调度选择2号进程
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		5		6		0
+
+进程等待FULL,进入阻塞
+系统时间50s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		7		2		0
+
+系统时间51s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		5		1		2
+
+指令执行完
+系统时间52s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		5		1		2
+
+指令执行完
+系统时间55s
+执行的作业：3
+执行的进程：3
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		6		0		1
+
+指令执行完
+系统时间58s
+执行的作业：3
+执行的进程：3
+剩余时间：3
+时间片
+3
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		7		0		1
+
+指令执行完
+系统时间60s
+执行的作业：3
+执行的进程：3
+剩余时间：2
+时间片
+2
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		8		0		1
+
+指令执行完
+系统时间62s
+执行的作业：3
+执行的进程：3
+剩余时间：1
+时间片
+1
+当前进程继续执行！
+系统时间64s
+当前运行进程时间片不足，进行进程切换
+进程调度选择4号进程
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		4		5		0
+
+系统时间65s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		8		1		2
+
+指令执行完
+系统时间66s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		8		1		2
+
+指令执行完
+系统时间69s
+执行的作业：1
+执行的进程：1
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		9		3		0
+
+系统时间72s
+执行的作业：1
+执行的进程：1
+剩余时间：3
+时间片
+3
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		6		1		2
+
+指令执行完
+系统时间73s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		6		1		2
+
+指令执行完
+系统时间76s
+执行的作业：2
+执行的进程：2
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		7		4		0
+
+进程等待mutex，进入阻塞
+系统时间79s
+执行的作业：2
+执行的进程：2
+剩余时间：3
+时间片
+3
+进程调度选择3号进程
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		9		2		0
+
+系统时间80s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		5		4		0
+
+进程等待mutex，进入阻塞
+系统时间81s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		10		1		2
+
+指令执行完
+系统时间82s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		10		1		2
+
+指令执行完
+系统时间85s
+执行的作业：1
+执行的进程：1
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		11		3		0
+
+系统时间88s
+执行的作业：1
+执行的进程：1
+剩余时间：3
+时间片
+3
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		10		2		0
+
+系统时间89s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+进程调度选择2号进程
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		8		0		1
+
+指令执行完
+系统时间90s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		9		1		2
+
+指令执行完
+系统时间92s
+执行的作业：2
+执行的进程：2
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		9		1		2
+
+指令执行完
+系统时间95s
+执行的作业：2
+执行的进程：2
+剩余时间：3
+时间片
+3
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		10		2		0
+
+系统时间98s
+执行的作业：2
+执行的进程：2
+剩余时间：2
+时间片
+2
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		6		2		0
+
+系统时间99s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+进程调度选择3号进程
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		11		0		1
+
+指令执行完
+系统时间100s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		12		1		2
+
+指令执行完
+系统时间102s
+执行的作业：3
+执行的进程：3
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		12		1		2
+
+指令执行完
+系统时间105s
+执行的作业：3
+执行的进程：3
+剩余时间：3
+时间片
+3
+当前进程继续执行！
+系统时间108s
+当前运行进程时间片不足，进行进程切换
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		12		2		0
+
+系统时间109s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+进程调度选择2号进程
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		11		6		0
+
+进程等待FULL,进入阻塞
+系统时间110s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		7		0		1
+
+指令执行完
+系统时间111s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		8		5		0
+
+系统时间113s
+执行的作业：4
+执行的进程：4
+剩余时间：4
+时间片
+4
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		13		3		0
+
+系统时间114s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+后备作业队列为空！
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		13		6		0
+
+进程等待FULL,进入阻塞
+系统时间115s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		12		4		0
+
+进程等待mutex，进入阻塞
+系统时间116s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
 
 CPU空闲等待
 
-系统时间20s
+系统时间117s
 
 CPU等待
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		9		5		0
+
+系统时间118s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		14		4		0
+
+进程等待mutex，进入阻塞
+系统时间119s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+后备作业队列为空！
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		13		4		0
+
+进程等待mutex，进入阻塞
+系统时间120s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		14		1		2
+
+指令执行完
+系统时间121s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		14		1		2
+
+指令执行完
+系统时间124s
+执行的作业：1
+执行的进程：1
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+系统时间127s
+当前运行进程时间片不足，进行进程切换
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		15		3		0
+
+系统时间128s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		10		1		2
+
+指令执行完
+系统时间129s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		10		1		2
+
+指令执行完
+系统时间132s
+执行的作业：4
+执行的进程：4
+剩余时间：4
+时间片
+4
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		11		3		0
+
+系统时间135s
+执行的作业：4
+执行的进程：4
+剩余时间：3
+时间片
+3
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		15		5		0
+
+系统时间136s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		14		5		0
+
+系统时间137s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		16		2		0
+
+系统时间138s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		12		5		0
+
+系统时间139s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+后备作业队列为空！
 
 CPU空闲等待
 
-系统时间378s
+系统时间140s
 
 CPU等待
 进程调度选择3号进程
@@ -468,160 +1273,183 @@ CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-3		3		29		3		6		0
+3		3		24		17		6		0
 
 进程等待FULL,进入阻塞
-系统时间21s
+系统时间141s
 执行的作业：3
 执行的进程：3
 剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
 时间片
 5
-
-CPU空闲等待
-
-系统时间379s
-
-CPU等待
 进程调度选择1号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		2		4		0
+1		1		21		16		5		0
 
-指令执行完
-系统时间22s
+系统时间142s
 执行的作业：1
 执行的进程：1
 剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
 时间片
 5
-当前进程继续执行！
-后备作业队列为空！
 
 CPU空闲等待
 
-系统时间380s
+系统时间143s
 
 CPU等待
+进程调度选择2号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-1		1		29		3		6		0
+2		2		22		15		4		0
 
-进程等待FULL,进入阻塞
-系统时间23s
-执行的作业：1
-执行的进程：1
+进程等待mutex，进入阻塞
+系统时间144s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+后备作业队列为空！
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		18		2		0
+
+系统时间145s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+
+CPU空闲等待
+
+系统时间146s
+
+CPU等待
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		19		1		2
+
+指令执行完
+系统时间147s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		19		1		2
+
+指令执行完
+系统时间150s
+执行的作业：3
+执行的进程：3
 剩余时间：4
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
 时间片
 4
+当前进程继续执行！
 
-CPU空闲等待
+CPU正在执行指令的相关信息
 
-系统时间381s
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-CPU等待
+3		3		24		20		0		1
 
-CPU空闲等待
-
-系统时间24s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间382s
-
-CPU等待
-发生高级调度
-4号作业被创建为进程
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:25
-ProID: 4
-PageNum: 3
-State: Instruct
-id	state	times
-13	1	1
-14	1	1
-15	2	1
-16	5	1
-Present Length: 14
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:25
-ProID: 4
-PageNum: 4
-State: Instruct
-id	state	times
-17	4	1
-18	1	1
-19	6	1
-20	5	1
-Present Length: 15
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:25
-ProID: 4
-PageNum: 5
-State: Instruct
-id	state	times
-21	4	1
-22	2	1
-23	0	1
-24	3	1
-Present Length: 16
-
-为进程分配交换区:
-该物理块包含的指令有:
-Time:25
-ProID: 4
-PageNum: 6
-State: Instruct
-id	state	times
-25	2	1
-26	6	1
-Present Length: 17
+指令执行完
+系统时间153s
+执行的作业：3
+执行的进程：3
+剩余时间：3
+时间片
+3
+当前进程继续执行！
 后备作业队列为空！
+系统时间155s
+当前运行进程时间片不足，进行进程切换
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		16		5		0
+
+系统时间156s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
 进程调度选择4号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-4		4		26		4		4		0
+4		4		24		13		6		0
 
-进程等待mutex，进入阻塞
-系统时间25s
+进程等待FULL,进入阻塞
+系统时间157s
 执行的作业：4
 执行的进程：4
 剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 0	Device2: 0
 时间片
 5
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		21		3		0
+
+系统时间158s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		17		5		0
+
+系统时间159s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+后备作业队列为空！
 
 CPU空闲等待
 
-系统时间383s
+系统时间160s
 
 CPU等待
 进程调度选择2号进程
@@ -630,383 +1458,205 @@ CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-2		2		21		4		1		0
+2		2		22		17		0		1
 
 指令执行完
-系统时间26s
+系统时间161s
 执行的作业：2
 执行的进程：2
 剩余时间：5
-
-当前进程占用的设备资源：
-Device1: 1	Device2: 0
 时间片
 5
 当前进程继续执行！
-
-CPU空闲等待
-
-系统时间384s
-
-CPU等待
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-2		2		21		2		3		0
+2		2		22		18		0		1
 
-进程进入阻塞队列
-系统时间27s
+指令执行完
+系统时间163s
 执行的作业：2
 执行的进程：2
 剩余时间：4
-
-当前进程占用的设备资源：
-Device1: 1	Device2: 0
 时间片
 4
+当前进程继续执行！
 后备作业队列为空！
+系统时间165s
+当前运行进程时间片不足，进行进程切换
+进程调度选择4号进程
 
-CPU空闲等待
+CPU正在执行指令的相关信息
 
-系统时间385s
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-CPU等待
+4		4		24		14		5		0
 
-CPU空闲等待
+系统时间166s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+进程调度选择3号进程
 
-系统时间28s
+CPU正在执行指令的相关信息
 
-CPU等待
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-CPU空闲等待
+3		3		24		22		3		0
 
-系统时间386s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间29s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间387s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间30s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间388s
-
-CPU等待
+系统时间167s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
 进程调度选择2号进程
 
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-2		2		21		3		0		0
+2		2		22		19		5		0
 
-指令执行完
-系统时间31s
+系统时间168s
 执行的作业：2
 执行的进程：2
 剩余时间：5
+时间片
+5
+进程调度选择1号进程
 
-当前进程占用的设备资源：
-Device1: 1	Device2: 0
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		18		2		0
+
+系统时间169s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+后备作业队列为空！
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		23		5		0
+
+系统时间170s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+进程调度选择1号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+1		1		21		19		3		0
+
+系统时间171s
+执行的作业：1
+执行的进程：1
+剩余时间：5
+时间片
+5
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		15		1		2
+
+指令执行完
+系统时间172s
+执行的作业：4
+执行的进程：4
+剩余时间：5
 时间片
 5
 当前进程继续执行！
 
-CPU空闲等待
-
-系统时间389s
-
-CPU等待
-
 CPU正在执行指令的相关信息
 
 ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
 
-2		2		21		4		1		0
+4		4		24		15		1		2
 
 指令执行完
-系统时间32s
-执行的作业：2
-执行的进程：2
+系统时间175s
+执行的作业：4
+执行的进程：4
 剩余时间：4
-
-当前进程占用的设备资源：
-Device1: 2	Device2: 0
 时间片
 4
 当前进程继续执行！
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间390s
-
-CPU等待
-
-CPU正在执行指令的相关信息
-
-ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
-
-2		2		21		4		1		0
-
-指令执行完
-系统时间33s
-执行的作业：2
-执行的进程：2
-剩余时间：3
-
-当前进程占用的设备资源：
-Device1: 3	Device2: 0
-时间片
-3
-当前进程继续执行！
-
-CPU空闲等待
-
-系统时间391s
-
-CPU等待
-
-CPU正在执行指令的相关信息
-
-ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
-
-2		2		21		4		1		0
-
-系统时间34s
-执行的作业：2
-执行的进程：2
-剩余时间：2
-
-当前进程占用的设备资源：
-Device1: 3	Device2: 0
-时间片
-2
-
-CPU空闲等待
-
-系统时间392s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间35s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间393s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间36s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间394s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间37s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间395s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间38s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间396s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间39s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间397s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间40s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间398s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间41s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间399s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间42s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间400s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间43s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间401s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间44s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间402s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间45s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间403s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间46s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间404s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间47s
-
-CPU等待
-后备作业队列为空！
-
-CPU空闲等待
-
-系统时间405s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间48s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间406s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间49s
-
-CPU等待
-
-CPU空闲等待
-
-系统时间407s
-
-CPU等待
 
 Memory Page Out,Clear this Space
-Time:49
-ProID: 2
+Time:178
+ProID: 1
 PageNum: 0
 State: Instruct
 id	state	times
-1	5	1
-2	3	1
-3	0	1
-4	1	1
+1	3	3
+2	6	4
+3	3	3
+4	0	1
+Present Length: 13
+
+Memory Page Out,Clear this Space
+Time:178
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 14
+
+Memory Page Out,Clear this Space
+Time:178
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 15
+
+Memory Page Out,Clear this Space
+Time:178
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 16
+
+Memory Page Out,Clear this Space
+Time:178
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 17
+
+Memory Page Out,Clear this Space
+Time:178
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
 Present Length: 18
 
 Memory Page Out,Clear this Space
-Time:49
+Time:178
 ProID: -1
 PageNum: -1
 State: Instruct
@@ -1014,127 +1664,763 @@ id	state	times
 Present Length: 19
 
 Memory Page Out,Clear this Space
-Time:49
+Time:178
 ProID: -1
 PageNum: -1
 State: Instruct
 id	state	times
 Present Length: 20
 
+Memory Page Out,Clear this Space
+Time:178
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 21
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		16		0		1
+
+指令执行完
+系统时间178s
+执行的作业：4
+执行的进程：4
+剩余时间：3
+时间片
+3
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		17		2		0
+
+系统时间180s
+执行的作业：4
+执行的进程：4
+剩余时间：2
+时间片
+2
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		20		3		0
+
+系统时间181s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		18		2		0
+
+系统时间182s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+
+CPU空闲等待
+
+系统时间183s
+
+CPU等待
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		19		4		0
+
+进程等待mutex，进入阻塞
+系统时间184s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+后备作业队列为空！
+进程调度选择3号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		24		1		2
+
+指令执行完
+系统时间185s
+执行的作业：3
+执行的进程：3
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+3		3		24		24		1		2
+
+进程执行完
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: 3
+PageNum: 0
+State: Instruct
+id	state	times
+1	5	4
+2	2	2
+3	1	2
+4	1	2
+Present Length: 22
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 23
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 24
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 25
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 26
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 27
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 28
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 29
+
+Memory Page Out,Clear this Space
+Time:190
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 30
+
 Process lock,Clear this Space
-Time:49
+Time:190
+ProID: 3
+PageNum: 3
+State: Instruct
+id	state	times
+13	3	3
+14	4	3
+15	3	3
+16	2	2
+Present Length: 29
+
+Process lock,Clear this Space
+Time:190
+ProID: 3
+PageNum: 4
+State: Instruct
+id	state	times
+17	6	4
+18	2	2
+19	1	2
+20	0	1
+Present Length: 28
+
+Process lock,Clear this Space
+Time:190
+ProID: 3
+PageNum: 5
+State: Instruct
+id	state	times
+21	3	3
+22	3	3
+23	5	4
+24	1	2
+Present Length: 27
+
+Process lock,Clear this Space
+Time:190
+ProID: 3
+PageNum: 0
+State: Instruct
+id	state	times
+1	5	4
+2	2	2
+3	1	2
+4	1	2
+Present Length: 26
+系统时间188s
+执行的作业：3
+执行的进程：3
+剩余时间：4
+时间片
+4
+进程执行完，进程撤销！
+进程调度选择2号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		21		0		1
+
+指令执行完
+系统时间191s
+执行的作业：2
+执行的进程：2
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+2		2		22		22		5		0
+
+系统时间193s
+执行的作业：2
+执行的进程：2
+剩余时间：4
+时间片
+4
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		20		5		0
+
+系统时间194s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间195s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间196s
+
+CPU等待
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: 2
+PageNum: 0
+State: Instruct
+id	state	times
+1	5	4
+2	2	2
+3	2	2
+4	3	3
+Present Length: 27
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 28
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 29
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 30
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 31
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 32
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 33
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 34
+
+Memory Page Out,Clear this Space
+Time:197
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 35
+
+Process lock,Clear this Space
+Time:197
 ProID: 2
 PageNum: 3
 State: Instruct
 id	state	times
-13	2	1
-14	4	1
-15	3	1
-16	2	1
-Present Length: 19
+13	4	3
+14	5	4
+15	4	3
+16	5	4
+Present Length: 34
 
 Process lock,Clear this Space
-Time:49
+Time:197
 ProID: 2
 PageNum: 4
 State: Instruct
 id	state	times
-17	2	1
-18	1	1
-19	0	1
-20	4	1
-Present Length: 18
+17	0	1
+18	0	1
+19	5	4
+20	3	3
+Present Length: 33
 
 Process lock,Clear this Space
-Time:49
+Time:197
 ProID: 2
 PageNum: 5
 State: Instruct
 id	state	times
-21	5	1
-Present Length: 17
+21	0	1
+22	5	4
+Present Length: 32
 
 Process lock,Clear this Space
-Time:49
+Time:197
 ProID: 2
 PageNum: 0
 State: Instruct
 id	state	times
-1	5	1
-2	3	1
-3	0	1
-4	1	1
-Present Length: 16
+1	5	4
+2	2	2
+3	2	2
+4	3	3
+Present Length: 31
+
+CPU空闲等待
+
+系统时间197s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间198s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间199s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间200s
+
+CPU等待
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		21		3		0
+
+系统时间201s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+
+CPU空闲等待
+
+系统时间202s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间203s
+
+CPU等待
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		22		6		0
+
+进程等待FULL,进入阻塞
+系统时间204s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间205s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间206s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间207s
+
+CPU等待
+进程调度选择4号进程
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		23		0		1
+
+指令执行完
+系统时间208s
+执行的作业：4
+执行的进程：4
+剩余时间：5
+时间片
+5
+当前进程继续执行！
+后备作业队列为空！
+
+CPU正在执行指令的相关信息
+
+ProID	    JobID	  InstrucNum	   InstructID	 InstructState	  InstructTimes
+
+4		4		24		24		5		0
+
+系统时间210s
+执行的作业：4
+执行的进程：4
+剩余时间：4
+时间片
+4
+
+CPU空闲等待
+
+系统时间211s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间212s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间213s
+
+CPU等待
 
 Memory Page Out,Clear this Space
-Time:407
-ProID: 2
+Time:214
+ProID: 4
 PageNum: 0
 State: Instruct
 id	state	times
-1	5	1
-2	3	1
-3	0	1
-4	1	1
-Present Length: 18
+1	4	3
+2	0	1
+3	1	2
+4	5	4
+Present Length: 32
 
 Memory Page Out,Clear this Space
-Time:407
+Time:214
 ProID: -1
 PageNum: -1
 State: Instruct
 id	state	times
-Present Length: 19
+Present Length: 33
 
 Memory Page Out,Clear this Space
-Time:407
+Time:214
 ProID: -1
 PageNum: -1
 State: Instruct
 id	state	times
-Present Length: 20
+Present Length: 34
 
-Process lock,Clear this Space
-Time:407
-ProID: 2
-PageNum: 32
+Memory Page Out,Clear this Space
+Time:214
+ProID: -1
+PageNum: -1
 State: Instruct
 id	state	times
-13	2	1
-14	4	1
-15	3	1
-16	2	1
-Present Length: 19
+Present Length: 35
 
-Process lock,Clear this Space
-Time:407
-ProID: 2
-PageNum: 33
+Memory Page Out,Clear this Space
+Time:214
+ProID: -1
+PageNum: -1
 State: Instruct
 id	state	times
-17	2	1
-18	1	1
-19	0	1
-20	4	1
-Present Length: 18
+Present Length: 36
 
-Process lock,Clear this Space
-Time:407
-ProID: 2
-PageNum: 34
+Memory Page Out,Clear this Space
+Time:214
+ProID: -1
+PageNum: -1
 State: Instruct
 id	state	times
-21	5	1
-Present Length: 17
+Present Length: 37
+
+Memory Page Out,Clear this Space
+Time:214
+ProID: -1
+PageNum: -1
+State: Instruct
+id	state	times
+Present Length: 38
 
 Process lock,Clear this Space
-Time:407
-ProID: 2
+Time:214
+ProID: 4
+PageNum: 3
+State: Instruct
+id	state	times
+13	6	4
+14	5	4
+15	1	2
+16	0	1
+Present Length: 37
+
+Process lock,Clear this Space
+Time:214
+ProID: 4
+PageNum: 4
+State: Instruct
+id	state	times
+17	2	2
+18	2	2
+19	4	3
+20	5	4
+Present Length: 36
+
+Process lock,Clear this Space
+Time:214
+ProID: 4
+PageNum: 5
+State: Instruct
+id	state	times
+21	3	3
+22	6	4
+23	0	1
+24	5	4
+Present Length: 35
+
+Process lock,Clear this Space
+Time:214
+ProID: 4
 PageNum: 0
 State: Instruct
 id	state	times
-1	5	1
-2	3	1
-3	0	1
-4	1	1
-Present Length: 16
+1	4	3
+2	0	1
+3	1	2
+4	5	4
+Present Length: 34
+
+CPU空闲等待
+
+系统时间214s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间215s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间216s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间217s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间218s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间219s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间220s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间221s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间222s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间223s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间224s
+
+CPU等待
+后备作业队列为空！
+
+CPU空闲等待
+
+系统时间225s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间226s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间227s
+
+CPU等待
+
+CPU空闲等待
+
+系统时间228s
+
+CPU等待

@@ -101,11 +101,11 @@ public class Source {
 				}
 				else {
 					Thequeue.ready.add(p);
-					common.proresAppend("进程" + p.pcb.ProID + "释放屏幕,进入就绪队列");
+					common.proresAppend("进程" + p.pcb.ProID + "释放屏幕,进入就绪队列\n");
 				}
 				if(screensQueue.size()>0) {
 					screens = screensQueue.get(0).pcb.ProID;
-					common.proresAppend("进程" + p.pcb.ProID + "申请屏幕成功");
+					common.proresAppend("进程" + p.pcb.ProID + "申请屏幕成功\n");
 				}
 				else
 					screens = 0;
@@ -138,11 +138,11 @@ public class Source {
 				}
 				else {
 					Thequeue.ready.add(p);
-					common.proresAppend("进程" + p.pcb.ProID + "释放打印机,进入就绪队列");
+					common.proresAppend("进程" + p.pcb.ProID + "释放打印机,进入就绪队列\n");
 				}
 				if(printersQueue.size()>0) {
 					printers = printersQueue.get(0).pcb.ProID;
-					common.proresAppend("进程" + p.pcb.ProID + "申请打印机成功");
+					common.proresAppend("进程" + p.pcb.ProID + "申请打印机成功\n");
 				}
 				else
 					printers = 0;
@@ -176,11 +176,11 @@ public class Source {
 				else
 				{
 					Thequeue.ready.add(p);
-					common.proresAppend("进程" + p.pcb.ProID + "释放键盘,进入就绪队列");
+					common.proresAppend("进程" + p.pcb.ProID + "释放键盘,进入就绪队列\n");
 				}
 				if(keyboardsQueue.size()>0) {
 					keyboards = keyboardsQueue.get(0).pcb.ProID;
-					common.proresAppend("进程" + p.pcb.ProID + "申请键盘成功");
+					common.proresAppend("进程" + p.pcb.ProID + "申请键盘成功\n");
 				}
 				else
 					keyboards = 0;
@@ -212,12 +212,12 @@ public class Source {
 				}
 				else {
 					Thequeue.ready.add(p);
-					common.proresAppend("进程"+p.pcb.ProID+"停止读磁盘,进入就绪队列");
+					common.proresAppend("进程"+p.pcb.ProID+"停止读磁盘,进入就绪队列\n");
 				}
 
 				if(readsQueue.size()>0) {
 					reads = readsQueue.get(0).pcb.ProID;
-					common.proresAppend("进程" + p.pcb.ProID + "申请读磁盘成功");
+					common.proresAppend("进程" + p.pcb.ProID + "申请读磁盘成功\n");
 				}
 				else
 					reads= 0;
@@ -248,11 +248,11 @@ public class Source {
 				}
 				else {
 					Thequeue.ready.add(p);
-					common.proresAppend("进程" + p.pcb.ProID + "停止写磁盘,进入就绪队列");
+					common.proresAppend("进程" + p.pcb.ProID + "停止写磁盘,进入就绪队列\n");
 				}
 				if(writesQueue.size()>0) {
 					writes = writesQueue.get(0).pcb.ProID;
-					common.proresAppend("进程" + p.pcb.ProID + "申请写磁盘成功");
+					common.proresAppend("进程" + p.pcb.ProID + "申请写磁盘成功\n");
 				}
 				else
 					writes = 0;

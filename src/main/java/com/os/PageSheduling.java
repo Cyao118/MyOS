@@ -170,7 +170,7 @@ public class PageSheduling extends Thread {
 
     public void deadlockRecover(int lock) throws IOException {  //死锁恢复,lock号进程放入作业队列
 
-        common.proresAppend("死锁恢复：");
+        common.proresAppend("死锁恢复：\n");
 
         //从PCB表中删除该进程
         Process l = new Process();
@@ -314,7 +314,7 @@ public class PageSheduling extends Thread {
     }
     public void showmem() {
         int i=0;
-        for(;i<64;i++) {
+        for(;i<32;i++) {
             Write_Frame.one.textArea[1].append(mem.block[i].get_Blockuse()+"  ");
             if((i+1)%8==0&&i!=0)
                 Write_Frame.one.textArea[1].append("\n");

@@ -7,8 +7,6 @@ public class CreatJobs {
 	public int PCB_num=0;
 	public int instruc_num[]=new int[100];
 	public boolean if_creatprocess;
-	public int resource1[]=new int[100];
-	public int resource2[]=new int[100];
 	public boolean if_creatInstruc[]=new boolean[100];
 	public File fp;
 	public int Creat_time = 0;
@@ -34,7 +32,7 @@ public class CreatJobs {
 			}
 			if (PCB_num != 0 && !if_creatprocess) {	
 			BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));
-	        output.write("ProID\tPriority\tInTime(s)\tresource1\tresource2\tInstrucNum \n");
+	        output.write("JobsID\tPriority\tInTimes\tInstrucNum \n");
 	        int i =0;
 	        Random r = new Random();
 			for (;i < PCB_num;i++) {
@@ -42,10 +40,8 @@ public class CreatJobs {
 				priority = ran1+1;
 				midtime =r.nextInt(6)+5;
 				instrucnum = r.nextInt(11)+20;
-				resource1[i]=0;
-				resource2[i]=0;
 				instruc_num[i]= instrucnum;
-				output.write(i+1+"\t"+priority+"\t"+intime+"\t"+resource1[i]+"\t"+resource2[i]+"\t"+instrucnum+"\n");
+				output.write(i+1+"\t"+priority+"\t"+intime+"\t"+instrucnum+"\n");
 				intime += midtime;
 			}
 			output.close();

@@ -4,16 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
-/**
- * @Author Chenyao
- * @Createtime 2022/3/25
- * @Description
- */
 public class common {
     public final static int timeslice = 5;
     public final static String user = "19317124";
     public final static int instructTypeNum = 7;
+    public final static int firstProNum = 5;
     public final static void proresAppend(String text)
     {
         int num = 0;

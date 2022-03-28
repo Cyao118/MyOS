@@ -132,7 +132,6 @@ public class management {
     						try {
 								pageInterrupt(cpu.pcb,(cpu.pcb.Ir[cpu.PC-1].L_Address >> 2));  //缺页中断,从外存寻找进程的某一页调入内存
 									//return false;
-
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -148,7 +147,7 @@ public class management {
 
     					//这里保护现场是要保存pc加后的值！
     					//读取指令
-    					mem.readIR(cpu.MDR);
+						if(cpu.MDR!=-1) mem.readIR(cpu.MDR);
     					Instruct m= cpu.pcb.Ir[cpu.PC-1];
 //    					System.out.println(""+nowTime+"\t"+cpu.pcb.pcb.ProID+"\t"+cpu.MDR+"\t"+cpu.pcb.pcb.instructID+'\t'+cpu.times);
     					cpu.IR.setir(m.Instruct_ID, m.Instruct_State, m.L_Address,m.time,m.runedtime);  //根据MDR中的物理地址读取内存获得指令
@@ -186,7 +185,7 @@ public class management {
 							// TODO Auto-generated catch block
 							e4.printStackTrace();
 						}
-    					common.proresAppend("完成的指令：" + "\n指令ID（InstructId）: " + cpu.IR.Instruct_ID + "\n指令类型（InstructState）: " + cpu.IR.Instruct_State + "\n指令内容（InstructDescription）: " + InstructTypes.getInstructByState(cpu.IR.Instruct_State).getDescription() + "\n运行时间（InRunTimes）: " + InstructTypes.getInstructByState(cpu.IR.Instruct_State).getRuntime() +"\n已运行时间（InRunedTimes）: " + cpu.IR.runedtime+ "\n逻辑地址（L_Address）: " + cpu.IR.L_Address+"\n物理地址（_Address）:"+cpu.MDR+"\n");
+    					common.proresAppend("完成的指令：" + "\n指令ID（InstructId）: " + cpu.IR.Instruct_ID + "\n指令类型（InstructState）: " + cpu.IR.Instruct_State + "\n指令内容（InstructDescription）: " + InstructTypes.getInstructByState(cpu.IR.Instruct_State).getDescription() + "\n运行时间（InRunTimes）: " + InstructTypes.getInstructByState(cpu.IR.Instruct_State).getRuntime() +"\n已运行时间（InRunedTimes）: " + cpu.IR.runedtime+ "\n逻辑地址（L_Address）: " + cpu.IR.L_Address+"\n物理地址（_Address）: "+cpu.MDR+"\n");
     					//保存CPU信息到文件中
     					try {
 							saveFile(flag);
@@ -455,7 +454,7 @@ public class management {
 				Memory.modifyBlock(p, page, bp, flag);  //更新物理块信息，将该页放入内存
 				//p.pcb.page_register.pageAddress=bp;//
 				Memory.updatePage(p.pcb.page_register.pageAddress,p.pcb.ProID,page,bp);  //写入该进程的页表（内存中）
-				common.proresAppend("缺页中断将当前进程" + page + "号页面装入" + bp + "号物理块！\n");
+				common.proresAppend("内存第"+bp+"块被进程"+p.pcb.ProID+"第"+page+"页占用\n");
 			}
 			else {
 				common.proresAppend("缺页中断，内存分配失败！\n");
@@ -524,11 +523,7 @@ public class management {
 		j.jobid = Integer.parseInt(p[0]);
 		j.priority = Integer.parseInt(p[1]);
 		j.arriveTime = Integer.parseInt(p[2]);
-		
-		j.d1 = Integer.parseInt(p[3]);
-		j.d2 = Integer.parseInt(p[4]);
-		//j.d3 = Integer.parseInt(p[5]);
-		j.instructNum = Integer.parseInt(p[5]);
+		j.instructNum = Integer.parseInt(p[3]);
 		j.psw =1;
 		j.IR = new Instruct[j.instructNum];
 		for(int i = 0 ;i < j.instructNum; i++) {

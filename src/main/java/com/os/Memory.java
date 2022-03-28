@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 
 public class Memory {
-    Block []InMemory=new Block[64];
+    Block []InMemory=new Block[32];
 
 	//基本物理信息
 	public int memSpace;  //内存空间大小
@@ -18,17 +18,17 @@ public class Memory {
 	public static Block[] block;  //内存物理块分配表 ,设为数组，因为内存中的物理块数是固定的
 	
 	public Memory() throws IOException {  //内存初始化
-		memSpace = 64;
-		sysSpace = 16;
-		userSpace = 48;  //单位为页
-		blockNum = 64;
-		blockRemain = 48;
-		block = new Block[64];
+		memSpace = 32;
+		sysSpace = 8;
+		userSpace = 24;  //单位为页
+		blockNum = 32;
+		blockRemain = 24;
+		block = new Block[32];
 		int i = 0;
-		for(; i < sysSpace; i++) {  //初始化前16个物理块，即系统区
+		for(; i < sysSpace; i++) {  //初始化前8个物理块，即系统区
 			block[i] = new Block();
 		}
-		for(; i < memSpace; i++) {  //用户区的48个创建文件，初始为空
+		for(; i < memSpace; i++) {  //用户区的24个创建文件，初始为空
 			block[i] = new Block();
 		}
 	}
@@ -40,7 +40,7 @@ public class Memory {
 
 	public static int allocateSpace() {  //返回分配的物理号
 		
-		for(int i = 16; i < 64; i++) {  //总共有48个用户区的物理块
+		for(int i = 8; i < 32; i++) {  //总共有24个用户区的物理块
 			if(block[i].get_Blockuse() == 0)   //当前物理块空闲,将当前物理块分给进程
 			{
 				block[i].set_Blockuse(1);
@@ -54,9 +54,7 @@ public class Memory {
 	public static void modifyBlock(Process p,int j,int b, boolean flag) throws IOException {  //修改物理块信息
 		
 		//这个修改是直接将装入页的信息赋值到内存中的
-		
-		if(flag)  //flag为真，为分配一个新的空闲的物理块，需要减；flag为假，是进行物理块替换的，不需要减
-			blockRemain--;//分配用户区
+
 		block[b].BlockID= b;  //物理块号
 		block[b].proid = p.pcb.ProID;  //该物理块中存放的第几号进程
 		block[b].status= j + 1;  //是该进程的第几页
@@ -64,8 +62,8 @@ public class Memory {
 		block[b].count = 1;
 		block[b].irnum = 0;  //这里要将指令的条数清零，因为在进行页面替换的时候，当前物理块的指令数为上一个物理块的指令数，会累加，会出错
 		if(p.pcb.page_register.pageAddress == b||p.pcb.page_register.pageAddress == -1) {
-			block[b].page = new LinkedList<Page>();
 			p.pcb.page_register.pageAddress = b;
+			common.proresAppend("进程"+p.pcb.ProID+"页表地址为物理内存第"+b+"块\n");
 		}
 		Memory.updatePage(p.pcb.page_register.pageAddress ,p.pcb.ProID,j,b);
 //		页表加一页
@@ -93,10 +91,11 @@ public class Memory {
 			Swap.setBlock(block[b]);//数据传到外存
 			block[phy].clear();  //真是释放所占用的物理块，即清空物理块内的信息
 			//clearBlockFile(phy);  //将清空的信息存入文件
+			common.proresAppend("内存第"+phy+"块释放\n");
 			blockRemain++;  //可分配的物理块数++
 		}
 		//清除页表所占的物理块
-		block[b].page = null;
+		block[b].page = new LinkedList<Page>();;
 	}
 	
 	public static void updatePage(int bnum,int proID,int j,int phy) throws IOException {  
@@ -149,14 +148,14 @@ public class Memory {
 	public int LRU() {  //页框替换算法
 		
 		int min = 0;
-		for(int i = 16; i < 64; i++) {  //找到第一个指令页或数据页作为最小的
-			if(block[i].status > 4 | block[i].status == 3) {  //进程的指令和数据段页面替换，其余的管理信息页面不可以！
+		for(int i = 8; i < 32; i++) {  //找到第一个指令页或数据页作为最小的
+			if(block[i].page.size()==0) {  //进程的指令和数据段页面替换，有页表的页不可以！
 				min = i;
 				break;
 			}
 		}
-		for(int j = min + 1; j < 64; j++) {
-			if(block[min].count > block[j].count && (block[j].status > 4 | block[j].status == 3))  //这里应该加上替换出去的页只可以是指令页
+		for(int j = min + 1; j < 32; j++) {
+			if(block[min].count > block[j].count && block[j].page.size()==0)  //有页表的页不可以！
 				min = j;
 		}
 		return min;

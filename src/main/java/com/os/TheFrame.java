@@ -157,7 +157,7 @@ public class TheFrame{
 		}
 		public void creat() throws IOException {
 			CreatJobs one=new CreatJobs();
-			one.set_num(4);
+			one.set_num(common.firstProNum);
 			one.creat_job();
 			one.creat_Instruc();
 			flag=1;

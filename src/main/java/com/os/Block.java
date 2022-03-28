@@ -23,7 +23,7 @@ public class Block {
 	  this.proid=-1;
 	  this.status=0;
 	  this.data=-1;
-	  this.page=null;
+	  this.page= new LinkedList<Page>();;
 	  this.ir=null;
 	  this.pcb=null;
 	  this.count=0;
@@ -68,6 +68,5 @@ public class Block {
 	  this.file=null;
 	  this.Blockuse=0;
 	}
-
 
 }

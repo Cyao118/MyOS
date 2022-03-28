@@ -182,6 +182,7 @@ public class Process{
 			if(this.pcb.prosize>3) {
 				for (; j < 3; j++) {  //一开始进程只分配三页
 					if ((phy = Memory.allocateSpace()) != -1) {  //内存中找到空闲页，可以分配
+						common.proresAppend("内存第"+phy+"块被进程"+this.pcb.ProID+"第"+j+"页占用\n");
 						if (j == 0) {  //此时是为页表分配空间的时候，将页表的物理块号提前记下
 							this.pcb.page_register.pageAddress = phy;  //页表所在内存的物理块号
 						}
@@ -190,13 +191,14 @@ public class Process{
 				}
 				for (; j < this.pcb.prosize; j++) {  //剩余页面放入外存交换区
 					management.swap.allocate(this, j); //第proID号进程的第J号页面送入交换区
-					common.proresAppend("第" + j + "页进入外存交换区！\n");
+					common.proresAppend("进程"+this.pcb.ProID+"第" + j + "页进入外存交换区！\n");
 				}
 			}
 			else
 			  {
 				  for (; j < this.pcb.prosize; j++) {  //一开始进程只分配三页
 					  if ((phy = Memory.allocateSpace()) != -1) {  //内存中找到空闲页，可以分配
+						  common.proresAppend("内存第"+phy+"块被进程"+this.pcb.ProID+"第"+j+"页占用\n");
 						  if (j == 0) {  //此时是为页表分配空间的时候，将页表的物理块号提前记下
 							  this.pcb.page_register.pageAddress = phy;  //页表所在内存的物理块号
 						  }
@@ -204,7 +206,7 @@ public class Process{
 					  }
 				  }
 			  }
-			
+
   		//使用形式a=processCreate(a);
   		//return a;
   	}

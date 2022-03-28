@@ -352,7 +352,7 @@ public class management {
 		}
 		jobTable = new LinkedList<JCB>();
 		nowTime = 0;  //初始时钟为-1
-		jobnum=4;
+		jobnum = common.firstProNum;
 		flag = 0;
 		irtime = 0;
 		pcblength = 0;
@@ -518,7 +518,7 @@ public class management {
 	public void writeJob(String line,BufferedReader br,int link) throws IOException {  //当前进程写入jobTable表中
 	
 		JCB j = new JCB();  //申请空白作业
-		String[] p = line.split("	");
+		String[] p = line.split(common.txtsplit);
 		
 		j.jobid = Integer.parseInt(p[0]);
 		j.priority = Integer.parseInt(p[1]);
@@ -541,15 +541,15 @@ public class management {
 		//m++;
 		
 		while(m < j.instructNum && (line2 = in.readLine()) != null) {
-			String[] t = line2.split("	");
+			String[] t = line2.split(common.txtsplit);
 			
 			j.IR[m].Instruct_ID = Integer.parseInt(t[0]);
 			
-			j.IR[m].Instruct_State = Integer.parseInt(t[2]);
+			j.IR[m].Instruct_State = Integer.parseInt(t[1]);
 
-			j.IR[m].L_Address = Integer.parseInt(t[4]);
+			j.IR[m].L_Address = Integer.parseInt(t[2]);
 
-			j.IR[m].time = Integer.parseInt(t[6]);
+			j.IR[m].time = Integer.parseInt(t[3]);
 
 
 

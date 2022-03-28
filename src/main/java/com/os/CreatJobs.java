@@ -32,7 +32,7 @@ public class CreatJobs {
 			}
 			if (PCB_num != 0 && !if_creatprocess) {	
 			BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));
-	        output.write("JobsID\tPriority\tInTimes\tInstrucNum \n");
+	        output.write("JobsID"+common.txtsplit+"Priority"+common.txtsplit+"InTimes"+common.txtsplit+"InstrucNum\n");
 	        int i =0;
 	        Random r = new Random();
 			for (;i < PCB_num;i++) {
@@ -41,7 +41,7 @@ public class CreatJobs {
 				midtime =r.nextInt(6)+5;
 				instrucnum = r.nextInt(11)+20;
 				instruc_num[i]= instrucnum;
-				output.write(i+1+"\t"+priority+"\t"+intime+"\t"+instrucnum+"\n");
+				output.write(i+1+common.txtsplit+priority+common.txtsplit+intime+common.txtsplit+instrucnum+"\n");
 				intime += midtime;
 			}
 			output.close();
@@ -67,7 +67,7 @@ public class CreatJobs {
 				fw.close();
 			}
 			BufferedWriter output = new BufferedWriter(new FileWriter(fp,true));
-			 output.write( "Instruc_ID\tInstruc_State\tL_Address\tInRunTimes\n");
+			 output.write( "Instruc_ID"+common.txtsplit+"Instruc_State"+common.txtsplit+"L_Address"+common.txtsplit+"InRunTimes\n");
 		    int Instruc_State = 0;
 		    if (PCB_num != 0 && !if_creatInstruc[j]) {
 			  int i = 0;
@@ -76,7 +76,7 @@ public class CreatJobs {
 			  for (;i < instruc_num[j];i++) {
 				Instruc_State = r.nextInt(common.instructTypeNum);
 				int L_Address =InstructTypes.getLogicAddressByState(Instruc_State, baseAddress);
-				output.write(i+1+"\t\t"+Instruc_State+"\t\t"+L_Address+"\t\t"+InstructTypes.getInstructByState(Instruc_State).getRuntime()+"\n");
+				output.write(i+1+common.txtsplit+Instruc_State+common.txtsplit+L_Address+common.txtsplit+InstructTypes.getInstructByState(Instruc_State).getRuntime()+"\n");
 				if(InstructTypes.getOrderTypeByState(Instruc_State))
 				  	baseAddress = L_Address;
 			  }

@@ -9,6 +9,7 @@ public class common {
     public final static String user = "19317124";
     public final static int instructTypeNum = 7;
     public final static int firstProNum = 5;
+    public final static String txtsplit = ",";
     public final static void proresAppend(String text)
     {
         int num = 0;

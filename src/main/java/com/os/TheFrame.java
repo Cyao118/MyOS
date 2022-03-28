@@ -124,7 +124,7 @@ public class TheFrame{
 						job.IR[i] = new Instruct();
 					}
 					//instruc_num[i]= instrucnum;
-					output.write(jobnum+"\t"+job.priority+"\t"+job.arriveTime+"\t"+job.d1+"\t"+job.d2+"\t"+job.instructNum+"\n");
+					output.write(jobnum+common.txtsplit+job.priority+common.txtsplit+job.arriveTime+common.txtsplit+job.instructNum+"\n");
 					String name=jobnum+".txt";
 					fp = new File(name);
 					if(!fp.exists())
@@ -135,7 +135,7 @@ public class TheFrame{
 						fw.close();
 					}
 					output = new BufferedWriter(new FileWriter(fp,true));
-					output.write( "Instruc_ID\tInstruc_State\tL_Address\tInRunTimes\n");
+					output.write( "Instruc_ID"+common.txtsplit+"Instruc_State"+common.txtsplit+"L_Address"+common.txtsplit+"InRunTimes\n");
 				    int Instruc_State = 0;
 				  
 					  int i = 0;
@@ -147,7 +147,7 @@ public class TheFrame{
 						  job.IR[i].Instruct_State = Instruc_State;
 						  job.IR[i].L_Address = InstructTypes.getLogicAddressByState(Instruc_State, baseAddress);
 						  job.IR[i].time = InstructTypes.getInstructByState(Instruc_State).getRuntime();
-						  output.write(i+1+"\t\t"+Instruc_State+"\t\t"+job.IR[i].L_Address+"\t\t"+job.IR[i].time+"\n");
+						  output.write(i+1+common.txtsplit+Instruc_State+common.txtsplit+job.IR[i].L_Address+common.txtsplit+job.IR[i].time+"\n");
 						  if(InstructTypes.getOrderTypeByState(Instruc_State))
 							  baseAddress = job.IR[i].L_Address;
 					  }
